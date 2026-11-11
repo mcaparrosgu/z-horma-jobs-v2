@@ -1,21 +1,21 @@
 {
   "analisis_ofertas": [
     {
-      "caso": "analisis de ofertas en código (Ran 36 tests in 0.768s · OK)",
+      "caso": "analisis de ofertas en código (Ran 40 tests in 0.762s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "casos_raros": [
     {
-      "caso": "casos raros de verificar, medir-ats y buscar (Ran 31 tests in 1.746s · OK)",
+      "caso": "casos raros de verificar, medir-ats y buscar (Ran 31 tests in 1.899s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "fecha_cierre": [
     {
-      "caso": "la oferta cerrada no se recomienda (Ran 3 tests in 0.163s · OK)",
+      "caso": "la oferta cerrada no se recomienda (Ran 3 tests in 0.167s · OK)",
       "ok": true,
       "obtenido": null
     }
@@ -309,54 +309,54 @@
   ],
   "ingesta": [
     {
-      "caso": "tests de seguridad de la descarga (Ran 83 tests in 5.529s · OK)",
+      "caso": "tests de seguridad de la descarga (Ran 83 tests in 5.369s · OK)",
       "ok": true,
       "obtenido": null
     },
     {
-      "caso": "tests del detector de ATS (Ran 9 tests in 0.007s · OK)",
+      "caso": "tests del detector de ATS (Ran 9 tests in 0.008s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "convertir": [
     {
-      "caso": "tests del conversor de CV (Ran 5 tests in 0.423s · OK)",
+      "caso": "tests del conversor de CV (Ran 5 tests in 0.430s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "verificar_formacion": [
     {
-      "caso": "tests del verificador, formación (Ran 4 tests in 0.503s · OK)",
+      "caso": "tests del verificador, formación (Ran 4 tests in 0.420s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "meses": [
     {
-      "caso": "tests del verificador, meses (Ran 4 tests in 0.436s · OK)",
+      "caso": "tests del verificador, meses (Ran 4 tests in 0.414s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "nivel_familia": [
     {
-      "caso": "tests del nivel por familia (Ran 5 tests in 0.185s · OK)",
+      "caso": "tests del nivel por familia (Ran 5 tests in 0.195s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "origenes_perfil": [
     {
-      "caso": "tests de los origenes del perfil (Ran 6 tests in 0.491s · OK)",
+      "caso": "tests de los origenes del perfil (Ran 6 tests in 0.533s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "nivel_empresas": [
     {
-      "caso": "el nivel por familia no llega a empresas (Ran 3 tests in 0.030s · OK)",
+      "caso": "el nivel por familia no llega a empresas (Ran 3 tests in 0.061s · OK)",
       "ok": true,
       "obtenido": null
     }

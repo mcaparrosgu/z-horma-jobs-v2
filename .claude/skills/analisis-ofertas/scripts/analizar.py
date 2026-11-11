@@ -152,6 +152,7 @@ _U_ANOS = r"(?:anos?|anys?|years?)"  # «anys»: Feina Activa publica en catalá
 _U_MESES = r"(?:mes|meses|mesos|months?)"
 _ANOS = re.compile(r"(\d+)\s*\+?\s*" + _U_ANOS + r"(?![a-z])")
 _MESES = re.compile(r"(\d+)\s*\+?\s*" + _U_MESES + r"(?![a-z])")
+_SIN_EXPERIENCIA = re.compile(r"\b(?:no es necesaria|no se requiere|no se necesita|sin experiencia|no cal|sense experiencia)\b")
 _NO_TEMA = {"anos", "anys", "years", "mes", "meses", "mesos", "months", "experiencia", "experiencias", "minimo", "minima", "menos", "como", "desarrollo"}
 # Otros nombres del mismo idioma (en catalán o variantes): se comparan por su nombre de referencia. Lista cerrada en reglas.json.
 _IDIOMA_CANON = {norm(k): norm(v) for k, v in REGLAS.get("idiomas_otros_nombres", {}).items()}
@@ -224,7 +225,8 @@ def corpus_perfil(perfil: dict) -> str:
 
 
 def _tokens(texto: str) -> list:
-    return [t for t in re.findall(r"[a-z0-9+#.]{3,}", norm(texto)) if t not in _VACIAS and not t.isdigit()]
+    toks = (t.rstrip(".") for t in re.findall(r"[a-z0-9+#.]{3,}", norm(texto)))  # «experiencia.» es «experiencia»
+    return [t for t in toks if len(t) >= 3 and t not in _VACIAS and not t.isdigit()]
 
 
 def _stem(t: str) -> str:
@@ -232,8 +234,10 @@ def _stem(t: str) -> str:
 
 
 def puesto_de(titulo: str) -> str:
-    """El título sin lo que va entre paréntesis («(substitució)», «(Barcelona)»): es el puesto, no sus condiciones."""
-    return " ".join(re.sub(r"\([^)]*\)", " ", (titulo or "")[:200]).split())  # tope: un título hostil no encarece la expresión
+    """El puesto del título: sin paréntesis («(substitució)») y sin lo que va tras « - », « con » o « amb »
+    («… con catalán», «… - Sant Guim»): son condiciones o lugar, no el puesto."""
+    t = re.sub(r"\([^)]*\)", " ", (titulo or "")[:200])  # tope: un título hostil no encarece la expresión
+    return " ".join(re.split(r"\s+-\s+|\s+(?:con|amb)\s+", t, maxsplit=1, flags=re.IGNORECASE)[0].split())
 
 
 def evaluar_requisito(req: str, perfil: dict, corpus: str, meses: int | None, hoy_anio: int, titulo: str = "") -> tuple:
@@ -261,18 +265,22 @@ def evaluar_requisito(req: str, perfil: dict, corpus: str, meses: int | None, ho
         patron, unidad, por = _MESES, _U_MESES, 1
         m = _MESES.search(r)
     if m:
+        if _SIN_EXPERIENCIA.search(r):  # «1 mes. No es necesaria experiencia»: como «0 años»
+            return 1.0, "anios_ok"
         if meses is None:
             return None, "anios_no_medibles"
         rango = re.search(r"(\d+)\s*(?:-|a|y|–)\s*(\d+)\s*" + unidad, r)
         pedidos = (int(rango.group(1)) if rango else int(m.group(1))) * por
         if pedidos == 0:
             return 1.0, "anios_ok"
-        tema = [t for t in _tokens(patron.sub(" ", r)) if t not in _NO_TEMA]
+        tema = [t for t in _tokens(patron.sub(" ", re.sub(r"\([^)]*\)", " ", r))) if t not in _NO_TEMA]  # «(es valorarà…)» no es el tema
         sufijo = ""
         if not tema:  # «Experiència 1 anys» a secas: es experiencia en el puesto de la oferta, no en cualquier cosa
-            puesto = puesto_de(titulo)
-            if es_prohibido(puesto):  # un título que habla de edad, salud, etc. no se usa ni se cita
+            # Un título que habla de edad, salud, etc. no se usa ni se cita. Se mira entero (sin paréntesis), antes de
+            # cortarlo en « con »: «Conserje con certificado de discapacidad» no se usa.
+            if es_prohibido(re.sub(r"\([^)]*\)", " ", (titulo or "")[:200])):
                 return None, "anios_no_medibles"
+            puesto = puesto_de(titulo)
             tema = [t for t in _tokens(puesto) if t not in _NO_TEMA]
             sufijo = "_puesto" if tema else ""
         if tema:  # años EN ESE TEMA, no años de cualquier cosa

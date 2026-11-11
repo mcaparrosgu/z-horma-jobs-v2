@@ -845,7 +845,12 @@
     "profesionales",
     "sector",
     "area",
-    "ambito"
+    "ambito",
+    "lloc",
+    "llocs",
+    "tasques",
+    "similars",
+    "funcions"
   ],
   "sector_palabras": {
     "desarrollo de software": [
