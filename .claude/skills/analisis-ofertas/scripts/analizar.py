@@ -323,6 +323,26 @@ def _lista(xs: list, tope: int = 4, largo: int = 70) -> str:
     return ", ".join(xs[:tope]) + (f" y {len(xs) - tope} más" if len(xs) > tope else "")
 
 
+_VALORA_RE = re.compile(r"(?<![a-z])(?:" + "|".join(re.escape(v) for v in sorted(_VALORA, key=len, reverse=True)) + r")(?![a-z])")
+
+
+def se_valora(req: str) -> bool:
+    """¿El requisito entero es un «se valora»? Sí si el marcador está fuera de paréntesis («Valorable: SAP»), o en un
+    paréntesis que no empieza por él («(se valora)», «(la oferta la indica como valorable)»). No si el paréntesis
+    empieza por el marcador y añade algo («(es valorarà Revit)»): eso valora un extra, el requisito es obligatorio."""
+    n = " ".join(norm(req).split())[:300]
+    if _VALORA_RE.search(re.sub(r"\([^)]*\)", " ", n)):
+        return True
+    for p in re.findall(r"\(([^)]*)\)", n):
+        m = _VALORA_RE.search(p)
+        if not m:
+            continue
+        extra = re.fullmatch(r"\s*(?:(?:es|se)\s+)?", p[: m.start()]) and p[m.end():].strip(" .:,;")
+        if not extra:
+            return True
+    return False
+
+
 def nota_y_detalle(o: dict, perfil: dict, hoy_anio: int) -> dict:
     reqs = [x for x in o.get("requisitos", []) if isinstance(x, str) and x.strip() and not es_prohibido(x)]
     corpus, meses = corpus_perfil(perfil), meses_de_experiencia(perfil, hoy_anio)
@@ -333,9 +353,9 @@ def nota_y_detalle(o: dict, perfil: dict, hoy_anio: int) -> dict:
         if v is None:
             sin_medir.append(req)
             continue
+        w = 0.5 if se_valora(req) else 1.0  # sobre el texto original, antes de recortarlo para la explicación
         if et.endswith("_puesto"):  # que se vea en qué se ha medido
             req = f"{_corto(req, 40)}, como {_corto(puesto_de(o.get('titulo', '')), 50)}"
-        w = 0.5 if any(s in norm(req) for s in _VALORA) else 1.0
         peso_total += w
         suma += w * v
         (cubre if v >= 1 else parcial if v > 0 else falta).append((req, et, v))

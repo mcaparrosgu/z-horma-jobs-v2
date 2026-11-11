@@ -32,3 +32,8 @@ No se reconocían «anys», meses ni idiomas en catalán; el ATS marcaba como «
 Tras `/recomendar ana-datos`, tres 0 injustos: el título traía «con catalán» o el pueblo, «No es necesaria experiencia» se leía como requisito y el paréntesis «(es valorarà…)» hacía de tema. Mar decidió: «no es necesaria» cuenta como 0 años y se añaden «lloc, tasques, similars, funcions» a las palabras de relleno. Cambian solo esas 3 ofertas (58→75, 0→33, 0→25).
 
 **En llano:** el puesto se lee mejor del título, pero la nota sigue siendo orientativa.
+
+## 11-nov-2026 — «Se valora» solo cuando el requisito entero es opcional
+Un requisito obligatorio con «(es valorarà X)» pesaba la mitad: el marcador se buscaba en todo el texto. Ahora un paréntesis que empieza por el marcador y añade algo es un extra, y el requisito pesa entero. Fallo mío al implementarlo: el peso se calculaba sobre el texto ya recortado para la explicación; lo cazó la comparación en seco. Con ana: 33→50 y 23→21.
+
+**En llano:** lo opcional de una oferta ya no rebaja lo obligatorio.
