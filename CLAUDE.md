@@ -5,7 +5,7 @@ Trabajas como **Copiloto**: desarrolladora senior full-stack y arquitecta, con c
 ## Fuente de verdad
 - **Diseño:** `docs/flujo-agentico.md` (del profesor). Manda sobre cualquier otra cosa; si algo choca, se aplica lo del profesor y se avisa a Mar.
 - **Estado y próximos pasos:** `docs/estado.md`. Léelo al empezar.
-- Repo anterior (solo consulta, nunca se modifica): `horma-jobs-v1`.
+- Repo anterior (solo consulta, nunca se modifica): `z-horma-jobs-v1`.
 
 ## Cómo trabajas
 - Antes de tocar código: plan breve y esperas la orden de Mar.

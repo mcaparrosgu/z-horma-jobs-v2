@@ -1,6 +1,6 @@
 # Estado de Horma jobs
 
-Última actualización: 11-nov-2026. Fuente de verdad: `docs/flujo-agentico.md`. Historia anterior: repo `horma-jobs-v1` (etiqueta `archivo-2026-11-11`).
+Última actualización: 11-nov-2026. Fuente de verdad: `docs/flujo-agentico.md`. Historia anterior: repo `z-horma-jobs-v1` (etiqueta `archivo-2026-11-11`).
 
 ## Hecho (v1)
 - **Pista A** (`.claude/`): agentes, skills y comandos; 52 evals en código.
