@@ -1,0 +1,21 @@
+# Base de datos de Horma. Separada de la de n8n (otro contenedor, volumen y puerto).
+services:
+  horma-db:
+    image: postgres:16
+    container_name: horma-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: horma
+      POSTGRES_DB: horma
+      POSTGRES_PASSWORD: ${HORMA_DB_PASSWORD:?falta HORMA_DB_PASSWORD en web/.env}
+    ports:
+      - "127.0.0.1:5433:5432"   # solo accesible desde este PC
+    volumes:
+      - horma-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U horma -d horma"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  horma-db-data:

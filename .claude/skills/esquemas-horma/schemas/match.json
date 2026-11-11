@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "match",
+  "type": "object",
+  "required": ["usuaria_id", "version_perfil", "fecha", "ofertas"],
+  "additionalProperties": false,
+  "properties": {
+    "usuaria_id": {"type": "string", "pattern": "^[a-z0-9_-][a-z0-9_.-]{0,79}$"},
+    "version_perfil": {"type": "string", "minLength": 1, "maxLength": 80},
+    "fecha": {"type": "string", "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"},
+    "ofertas": {"type": "array", "items": {"type": "object", "required": ["oferta_id", "nota", "nivel_condiciones", "explicacion"], "additionalProperties": false,
+      "properties": {
+        "oferta_id": {"type": "string", "minLength": 1, "maxLength": 200},
+        "nota": {"type": ["integer", "null"], "minimum": 0, "maximum": 100, "description": "Solo por experiencia y formación. null = sin datos suficientes en la oferta para medirla (no se inventa una cifra)"},
+        "nivel_condiciones": {"enum": ["encaja", "parcial", "no"], "description": "Solo por condiciones de trabajo, nunca por rasgos personales"},
+        "explicacion": {"type": "string", "minLength": 1, "maxLength": 1500},
+        "sin_sueldo": {"type": "boolean"},
+        "correccion": {"type": ["string", "null"], "maxLength": 1500}
+      }}}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "puestos": ["Diseñador gráfico", "Diseñador freelance"],
+  "ciudades": ["Sevilla"],
+  "paises": [],
+  "remoto": [],
+  "contrato": [],
+  "idiomas": [],
+  "sectores": [],
+  "niveles": [],
+  "sueldo_min": null,
+  "rango_compatibilidad": [0, 100]
+}

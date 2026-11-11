@@ -1,0 +1,10 @@
+[
+  {"frase": "# Ana Prueba Uno", "origen": {"archivo": "cv-maestro.md", "fragmento": "# Ana Prueba Uno", "linea": 1}},
+  {"frase": "Automaticé la carga semanal de pedidos con Python y SQL.", "origen": {"archivo": "cv-maestro.md", "fragmento": "Automaticé la carga semanal de pedidos con Python y SQL.", "linea": 10}},
+  {"frase": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.", "origen": {"archivo": "cv-maestro.md", "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.", "linea": 9}},
+  {"frase": "Reduje un 25 % el tiempo de preparación de informes.", "origen": {"archivo": "cv-maestro.md", "fragmento": "Reduje un 25 % el tiempo de preparación de informes.", "linea": 11}},
+  {"frase": "Gestioné la contabilidad de 35 clientes autónomos.", "origen": {"archivo": "cv-maestro.md", "fragmento": "Gestioné la contabilidad de 35 clientes autónomos.", "linea": 15}},
+  {"frase": "Inglés B2", "origen": {"archivo": "cv-maestro.md", "fragmento": "Inglés B2", "linea": 28}},
+  {"frase": "Español (nativo)", "origen": {"archivo": "cv-maestro.md", "fragmento": "Español (nativo)", "linea": 27}},
+  {"frase": "Python, SQL, Power BI, Excel", "origen": {"archivo": "cv-maestro.md", "fragmento": "Python, SQL, Power BI, Excel", "linea": 32}}
+]

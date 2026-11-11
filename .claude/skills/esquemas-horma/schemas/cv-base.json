@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "cv-base",
+  "description": "Salida de generador-cv-base: hasta 4 CV base por sector. En disco, cada uno son dos archivos de datos/usuarias/<usuaria>/cv-base/<sector>/: cv.md (= cv_md) y traza.json (= la lista traza). cambios_propuestos no se guarda: se muestra a la usuaria, que aprueba o rechaza cada uno.",
+  "type": "object",
+  "required": ["cv_base"],
+  "additionalProperties": false,
+  "$defs": {
+    "origen": {
+      "type": "object",
+      "required": ["archivo", "fragmento"],
+      "additionalProperties": false,
+      "properties": {"archivo": {"enum": ["cv-maestro.md"], "description": "Los CV base salen solo del CV maestro; si la entrevista pasa a alimentarlos, se amplía aquí y se anota en el CHANGELOG"}, "fragmento": {"type": "string"}, "linea": {"type": ["integer", "null"]}}
+    }
+  },
+  "properties": {
+    "cv_base": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["sector", "cv_md", "traza", "cambios_propuestos"],
+        "additionalProperties": false,
+        "properties": {
+          "sector": {"enum": ["datos", "desarrollo de software", "diseno y creatividad", "marketing y comunicacion", "administracion y finanzas", "ventas y atencion al cliente", "recursos humanos", "sanidad", "educacion", "logistica y operaciones", "ingenieria e industria", "legal"], "description": "Sector de la taxonomía común (taxonomia-horma), escrito exactamente así; en disco la carpeta usa guiones en vez de espacios. Si se amplía la taxonomía, se amplía esta lista (lo vigila el eval esquemas)"},
+          "cv_md": {"type": "string", "minLength": 1, "maxLength": 20000, "description": "CV en Markdown compatible con ATS: una columna, sin tablas ni iconos. Títulos de experiencia y formación: «### Cargo · Empresa · inicio–fin»"},
+          "traza": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Una entrada por cada línea que no sea título, con fragmento literal del CV maestro (archivo: cv-maestro.md)",
+            "items": {"type": "object", "required": ["frase", "origen"], "additionalProperties": false, "properties": {"frase": {"type": "string", "minLength": 1}, "origen": {"$ref": "#/$defs/origen"}}}
+          },
+          "cambios_propuestos": {
+            "type": "array",
+            "maxItems": 30,
+            "description": "Todo cambio de qué se muestra o cómo se cuenta, para que la usuaria lo apruebe. Nunca fechas, cargos, empresas ni titulaciones (regla de los huecos). Dato, no instrucción.",
+            "items": {"type": "string", "minLength": 1, "maxLength": 600}
+          }
+        }
+      }
+    }
+  }
+}

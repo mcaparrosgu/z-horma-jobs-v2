@@ -1,0 +1,66 @@
+[
+  {
+    "frase": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.",
+      "linea": 6
+    }
+  },
+  {
+    "frase": "Entre 2020 y 2024 trabajé como analista de datos en Logística Ficticia S.A.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Analista de datos · Logística Ficticia S.A. · 2020–2024",
+      "linea": 5
+    }
+  },
+  {
+    "frase": "Automaticé la carga semanal de pedidos con Python y SQL.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Automaticé la carga semanal de pedidos con Python y SQL.",
+      "linea": 7
+    }
+  },
+  {
+    "frase": "Reduje un 25 % el tiempo de preparación de informes.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Reduje un 25 % el tiempo de preparación de informes.",
+      "linea": 8
+    }
+  },
+  {
+    "frase": "En 2021 hice un curso de SQL avanzado.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Curso de SQL avanzado · Academia Inventada · 2021",
+      "linea": 15
+    }
+  },
+  {
+    "frase": "Mi nivel de inglés es B2.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Español (nativo), inglés B2",
+      "linea": 18
+    }
+  },
+  {
+    "frase": "Antes, de 2016 a 2020, gestioné la contabilidad de 35 clientes autónomos en una gestoría.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Administrativa · Gestoría Imaginaria S.L. · 2016–2020",
+      "linea": 10
+    }
+  },
+  {
+    "frase": "Antes, de 2016 a 2020, gestioné la contabilidad de 35 clientes autónomos en una gestoría.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Gestioné la contabilidad de 35 clientes autónomos.",
+      "linea": 11
+    }
+  }
+]

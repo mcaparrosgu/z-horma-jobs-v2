@@ -1,0 +1,20 @@
+{
+  "cobertura": 0.833,
+  "faltantes_con_origen": [],
+  "faltantes_sin_origen": [
+    "Azure Data Factory"
+  ],
+  "presentes": [
+    "SQL",
+    "Power BI",
+    "Python",
+    "SQL avanzado",
+    "Inglés B2 o superior"
+  ],
+  "no_medidos": [
+    "Al menos 3 años de experiencia como analista de datos o BI",
+    "Python para automatizar cargas de datos",
+    "Experiencia con Azure Data Factory",
+    "Se valora: conocimientos de logística y cadena de suministro"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "descripcion": "Carta con 7 errores sembrados sobre el CV de Ana (datos inventados). El juez-carta debe devolver veredicto 'corregir' y señalar cada uno con su tipo.",
+  "fuente": "datos/fixtures/perfiles/ana-datos/cv.md + datos/fixtures/ofertas/of-prueba-1.md",
+  "errores": [
+    {"frase": "reduje un 40 %", "tipo": "sin_origen", "nota": "el CV dice 25 %"},
+    {"frase": "dirigí un equipo de cinco analistas", "tipo": "sin_origen"},
+    {"frase": "tengo un máster en Estadística", "tipo": "sin_origen"},
+    {"frase": "muy proactiva y apasionada ... constantes ganas de aprender ... mejor candidata", "tipo": "cliche"},
+    {"frase": "Como madre de dos hijos", "tipo": "rasgo_personal"},
+    {"frase": "Me comprometo a incorporarme la semana próxima", "tipo": "promesa"},
+    {"frase": "conseguir los objetivos del primer trimestre", "tipo": "promesa"}
+  ],
+  "veredicto_esperado": "corregir"
+}

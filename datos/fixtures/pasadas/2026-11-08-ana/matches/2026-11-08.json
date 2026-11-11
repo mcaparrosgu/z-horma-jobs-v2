@@ -1,0 +1,42 @@
+{
+  "usuaria_id": "ana",
+  "version_perfil": "sin_version",
+  "fecha": "2026-11-08",
+  "ofertas": [
+    {
+      "oferta_id": "portal-empresas-retail-piloto-bi-b5554bbb",
+      "nota": 85,
+      "nivel_condiciones": "encaja",
+      "explicacion": "La oferta de Analista de BI pide 3 años o más como analista de datos, SQL avanzado, Power BI, Python para automatizar cargas e inglés B2. Ana tiene 4 años como analista de datos (2020–2024), con 8 cuadros de mando en Power BI y la carga semanal de pedidos automatizada con Python y SQL. También tiene un curso de SQL avanzado (2021) e inglés B2. Su experiencia en Logística Ficticia S.A. cubre además lo que la oferta valora (logística). Le falta Azure Data Factory, que la oferta pide y no aparece en su perfil. Sus preferencias están vacías, así que nada choca con Madrid híbrido, contrato indefinido, español y 34.000–40.000 € anuales.",
+      "sin_sueldo": false
+    },
+    {
+      "oferta_id": "JobTech_Suecia__Platsbanken_-31672635-eee082b3",
+      "nota": 25,
+      "nivel_condiciones": "encaja",
+      "explicacion": "El puesto de AI developer en SAAB pide Python, SQL, APIs REST, Git, Docker/Kubernetes, integraciones de sistemas y pruebas. Ana acredita Python y SQL (carga semanal automatizada con Python y SQL, curso de SQL avanzado), pero su perfil no muestra APIs REST, Git, contenedores, integraciones ni testing. Tampoco muestra ninguno de los méritos de IA (LangChain, RAG, fine-tuning). Su perfil es de analista de datos, no de desarrollo. Condiciones: sus preferencias están vacías, así que nada choca. La oferta no indica ubicación, contrato ni modalidad, y el idioma es sueco; el perfil de Ana solo recoge español e inglés.",
+      "sin_sueldo": true
+    },
+    {
+      "oferta_id": "JobTech_Suecia__Platsbanken_-31667316-ef601c46",
+      "nota": 12,
+      "nivel_condiciones": "encaja",
+      "explicacion": "El puesto de GenAI Developer exige experiencia en producción con arquitecturas RAG, frameworks agénticos (LangChain, AutoGen, CrewAI), Azure AI/OpenAI y front-end ligero para apps de IA. Nada de eso aparece en el perfil de Ana. Solo coincide en Python, que usa para automatizar cargas de datos, pero la oferta pide Python sólido con ingeniería de software (testing, diseño de sistemas) y su perfil no lo muestra. Es una distancia grande entre analista de datos y desarrollo de IA. Condiciones: preferencias vacías, así que nada choca. La oferta es híbrida y en inglés (Ana tiene B2), sin ubicación ni contrato indicados.",
+      "sin_sueldo": true
+    },
+    {
+      "oferta_id": "JobTech_Suecia__Platsbanken_-31693250-a4d1ab6d",
+      "nota": 10,
+      "nivel_condiciones": "encaja",
+      "explicacion": "El puesto de Backend Developer pide de 3 a 7 años como desarrolladora backend, APIs REST/RPC, cloud, contenedores, microservicios y CI/CD, además de titulación en informática o experiencia equivalente. Ana no tiene experiencia backend: sus 4 años son de analista de datos y su grado es en Administración de Empresas. Solo coinciden Python y SQL/bases de datos, de forma parcial. Faltan APIs, cloud, Docker/Kubernetes, CI/CD y Git. Condiciones: preferencias vacías, así que nada choca. La oferta es en Estocolmo, híbrida, en inglés, sin contrato indicado.",
+      "sin_sueldo": true
+    },
+    {
+      "oferta_id": "JobTech_Suecia__Platsbanken_-31664917-6ce9a72f",
+      "nota": 5,
+      "nivel_condiciones": "encaja",
+      "explicacion": "El puesto de Android Developer pide un grado o máster en informática, 2–5 años en desarrollo Android, Kotlin y Java, Linux y experiencia en apps para coche. Ana no tiene nada de eso: su grado es en Administración de Empresas y su experiencia es de análisis de datos y administración. Solo coincide SQL (2–5 años en SQL y bases de datos), que ella usa en análisis, no en desarrollo móvil. Condiciones: preferencias vacías, así que nada choca. La oferta no indica ubicación, contrato ni modalidad y está en inglés (Ana tiene B2).",
+      "sin_sueldo": true
+    }
+  ]
+}

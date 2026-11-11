@@ -1,0 +1,12 @@
+{
+  "puestos": ["Analista de datos"],
+  "ciudades": ["Madrid"],
+  "paises": [],
+  "remoto": [],
+  "contrato": [],
+  "idiomas": ["Español", "Inglés"],
+  "sectores": [],
+  "niveles": [],
+  "sueldo_min": null,
+  "rango_compatibilidad": [0, 100]
+}

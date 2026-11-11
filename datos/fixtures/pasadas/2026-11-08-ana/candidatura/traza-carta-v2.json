@@ -1,0 +1,51 @@
+[
+ {
+  "frase": "Me interesa este puesto porque combina cuadros de mando y automatización de informes, que es lo que ya hago, con un equipo de operaciones y logística.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "Me interesa este puesto porque combina cuadros de mando y automatización de informes, que es lo que ya hago, con un equipo de operaciones y logística."
+  }
+ },
+ {
+  "frase": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones."
+  }
+ },
+ {
+  "frase": "Reduje un 25 % el tiempo de preparación de informes.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "Reduje un 25 % el tiempo de preparación de informes."
+  }
+ },
+ {
+  "frase": "Automaticé la carga semanal de pedidos con Python y SQL.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "Automaticé la carga semanal de pedidos con Python y SQL."
+  }
+ },
+ {
+  "frase": "No he usado Azure Data Factory.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "No he usado Azure Data Factory."
+  }
+ },
+ {
+  "frase": "Lo más parecido que he hecho es automatizar cargas de datos con Python y SQL.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "Automaticé cargas de datos con Python y SQL"
+  }
+ },
+ {
+  "frase": "Quiero aprender Azure Data Factory.",
+  "origen": {
+   "archivo": "cv-maestro.md",
+   "fragmento": "quiero aprender Azure Data Factory"
+  }
+ }
+]

@@ -1,0 +1,41 @@
+{
+  "name": "horma-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1",
+    "lint": "eslint",
+    "test": "node --env-file-if-exists=.env --test src/lib/*.test.ts",
+    "migrar": "node --env-file=.env scripts/migrar.mjs",
+    "importar": "node --env-file=.env scripts/importar-datos.ts",
+    "verificar": "node --env-file=.env scripts/verificar.ts",
+    "exportar": "node --env-file=.env scripts/exportar.ts",
+    "borrar": "node --env-file=.env scripts/borrar.ts",
+    "respuestas": "node --env-file=.env scripts/respuestas.ts",
+    "exportar-empresa": "node --env-file=.env scripts/exportar-empresa.ts",
+    "borrar-empresa": "node --env-file=.env scripts/borrar-empresa.ts",
+    "dedup": "node --env-file=.env scripts/dedup.ts",
+    "cuenta": "node --env-file=.env scripts/cuenta.ts",
+    "cuenta-empresa": "node --env-file=.env scripts/cuenta-empresa.ts"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "next": "16.4.5",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

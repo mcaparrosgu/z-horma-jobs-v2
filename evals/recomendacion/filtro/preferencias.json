@@ -1,0 +1,12 @@
+{
+  "puestos": ["analista de datos"],
+  "ciudades": [],
+  "paises": ["ES"],
+  "remoto": ["remoto", "hibrido"],
+  "contrato": ["indefinido"],
+  "idiomas": ["es"],
+  "sectores": [],
+  "niveles": [],
+  "sueldo_min": 30000,
+  "rango_compatibilidad": [60, 100]
+}

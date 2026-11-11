@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "endpoints",
+  "description": "Registro de endpoints de búsqueda. Una fuente solo entra aquí si calificacion-fuente.json dice apta=true. La clave nunca va en el archivo: solo el nombre de la variable de entorno.",
+  "type": "object",
+  "required": ["fuentes"],
+  "additionalProperties": false,
+  "properties": {
+    "fuentes": {"type": "array", "items": {"type": "object",
+      "required": ["nombre", "url", "metodo", "parametros", "cabeceras", "clave_env", "mapeo_campos", "activa"],
+      "additionalProperties": false,
+      "properties": {
+        "nombre": {"type": "string"},
+        "url": {"type": "string"},
+        "metodo": {"enum": ["GET"]},
+        "parametros": {"type": "object", "additionalProperties": {"type": "string"}},
+        "cabeceras": {"type": "object", "additionalProperties": {"type": "string"}},
+        "clave_env": {"type": ["string", "null"], "description": "Nombre de la variable de entorno con la clave; null si no pide clave"},
+        "clave_en": {"enum": ["cabecera", "parametro", null]},
+        "clave_nombre": {"type": ["string", "null"], "description": "Nombre de la cabecera o del parámetro donde va la clave"},
+        "mapeo_campos": {"type": "object", "description": "lista = ruta al array en la respuesta; el resto: campo de Horma -> ruta dentro de cada elemento", "required": ["lista", "id", "titulo", "empresa", "url", "descripcion"], "additionalProperties": {"type": "string"}},
+        "licencia": {"enum": ["empresa", "socio", "abierto", "usuaria"], "description": "Permiso con el que Horma tiene las ofertas de esta fuente. Opcional en el esquema, pero ingestar.py no ingesta una fuente sin ella."},
+        "atribucion": {"type": ["string", "null"], "maxLength": 200, "description": "Texto que hay que citar al mostrar sus ofertas; null si no se exige"},
+        "adaptador": {"enum": ["boe-sumario", "feinaactiva-xml"], "description": "Nombre de un adaptador de ingestar.py para orígenes anidados, por día o en XML; `url` puede llevar {fecha} (AAAAMMDD). Opcional."},
+        "activa": {"type": "boolean"}
+      }}}
+  }
+}

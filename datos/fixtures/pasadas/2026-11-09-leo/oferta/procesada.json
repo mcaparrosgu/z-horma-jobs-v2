@@ -1,0 +1,74 @@
+{
+  "id": "portal-empresas-estudio-cartel-piloto-diseno-b2b564ed",
+  "fuente": "portal-empresas",
+  "url": "http://localhost:3000/ofertas",
+  "fecha": "2026-11-09",
+  "titulo": "Diseñador/a gráfico/a de identidad visual y packaging",
+  "descripcion": "Buscamos una persona diseñadora gráfica para el equipo de marca de un estudio pequeño. Te encargarás de crear identidades visuales para clientes locales, preparar maquetaciones para imprenta y coordinar a colaboradores externos en los proyectos.",
+  "empresa": "Estudio Cartel Piloto S.L.",
+  "ubicacion": "Sevilla",
+  "pais": "ES",
+  "remoto": "hibrido",
+  "contrato": "indefinido",
+  "idioma": "español",
+  "nivel": "no_indicado",
+  "requisitos": [
+    "Al menos 2 años de experiencia como diseñador/a gráfico/a.",
+    "Dominio de Illustrator, InDesign y Photoshop.",
+    "Experiencia liderando proyectos de identidad visual de principio a fin.",
+    "Manejo de Figma.",
+    "Inglés B1.",
+    "Se valora: experiencia en packaging y conocimientos de preimpresión."
+  ],
+  "origen": {
+    "licencia": "empresa",
+    "atribucion": "Estudio Cartel Piloto S.L."
+  },
+  "salario": {
+    "publicado": true,
+    "min": 24000,
+    "max": 28000,
+    "moneda": "€",
+    "periodo": "anual"
+  },
+  "taxonomia": {
+    "sector": "diseno y creatividad",
+    "familia": "diseno grafico",
+    "stack": [
+      "Illustrator",
+      "InDesign",
+      "Photoshop",
+      "Figma"
+    ]
+  },
+  "auditoria": {
+    "fantasma": {
+      "sospechosa": false,
+      "motivos": [
+        "Trae fecha de publicación (2026-11-09), igual a la de descarga.",
+        "Nombra la empresa: Estudio Cartel Piloto S.L., con ubicación (Sevilla, híbrido con 2 días en el estudio).",
+        "No es genérica: describe tareas concretas (identidades visuales para clientes locales, maquetación para imprenta, coordinación de colaboradores externos) y requisitos específicos.",
+        "Publica contrato (indefinido) y salario (24.000-28.000 € brutos anuales).",
+        "No he podido comprobar si está repetida: solo he visto esta oferta, sin histórico ni otras fuentes con las que cruzarla."
+      ]
+    },
+    "fraude": {
+      "sospechosa": false,
+      "motivos": [
+        "El texto no pide dinero, pagos ni cursos.",
+        "El texto no pide datos bancarios ni documentos de identidad.",
+        "No incluye ningún correo de contacto, así que no hay un correo gratuito usado en nombre de una empresa.",
+        "Es una sociedad con razón social (S.L.) y la licencia de origen es «empresa» (publicada desde el portal de empresas de Horma)."
+      ]
+    },
+    "empresa_validada": {
+      "valor": "no_comprobada",
+      "motivo": "La oferta no trae el dominio de la empresa. La única URL es http://localhost:3000/ofertas, que es el entorno de pruebas, y no se ha navegado a ella. Sin un dominio real no se puede validar la empresa."
+    },
+    "transparencia": {
+      "salario_publicado": true,
+      "frase_para_pedirlo": null
+    },
+    "instrucciones_embebidas": []
+  }
+}

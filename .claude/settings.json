@@ -1,0 +1,77 @@
+{
+  "agent": "copiloto",
+  "enabledPlugins": {
+    "n8n-mcp-skills@n8n-mcp-skills": false
+  },
+  "skillOverrides": {
+    "n8n-mcp-native": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:llee-hospi-project-context": "off",
+    "asesora-negocio": "off",
+    "neg-01-decision": "off",
+    "neg-02-hechos": "off",
+    "neg-03-mercado": "off",
+    "neg-04-costes": "off",
+    "neg-05-numeros": "off",
+    "paso-01-problema": "off",
+    "paso-02-historias": "off",
+    "paso-03-mvp": "off",
+    "paso-04-legal": "off",
+    "paso-05-spec": "off",
+    "paso-06-stack": "off",
+    "paso-07-rol-ia": "off",
+    "paso-08-tareas": "off",
+    "paso-09-terreno": "off",
+    "paso-10-construir": "off",
+    "paso-19-case-study": "off"
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(python -I .claude/skills/*)",
+      "Bash(python -I evals/correr_evals.py*)",
+      "Bash(npm test*)",
+      "Bash(npm run *)",
+      "Bash(npx tsc*)",
+      "Bash(node *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git switch *)",
+      "Bash(git checkout -b *)",
+      "Bash(git merge --no-ff *)",
+      "Bash(git check-ignore *)",
+      "Bash(docker ps*)",
+      "Bash(docker exec horma-db *)",
+      "Bash(date*)",
+      "Bash(ls*)",
+      "Bash(mkdir *)",
+      "PowerShell(npm *)",
+      "PowerShell(npx tsc*)",
+      "PowerShell(git status*)",
+      "PowerShell(git diff*)",
+      "PowerShell(git log*)",
+      "mcp__plugin_playwright_playwright__*"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./web/.env)",
+      "Read(./web/.env.*)",
+      "Read(./docs/privado/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "python -I .claude/skills/verificar-trazabilidad/scripts/hook.py" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "descripcion": "La empresa se llama «Logística…» pero la oferta no menciona logística en ningún campo: el matcher no puede deducir el sector del nombre (hallazgo de la pasada del 8-nov).",
+  "entrada": ["oferta.json + perfil y preferencias de la fixture ana-datos"],
+  "la_explicacion_no_contiene": ["logíst", "logist", "cadena de suministro"],
+  "lo_corre": "/evaluar recomendacion (cualitativo, con LLM; no entra en correr_evals.py)"
+}

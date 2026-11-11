@@ -1,0 +1,11 @@
+[
+  {"frase": "Ana Prueba Uno", "origen": {"archivo": "cv.md", "fragmento": "# Ana Prueba Uno (persona inventada)"}},
+  {"frase": "Madrid · ana.prueba1@ejemplo.invalid", "origen": {"archivo": "cv.md", "fragmento": "Madrid · ana.prueba1@ejemplo.invalid"}},
+  {"frase": "Automaticé la carga semanal de pedidos con Python y SQL.", "origen": {"archivo": "cv.md", "fragmento": "- Automaticé la carga semanal de pedidos con Python y SQL."}},
+  {"frase": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones.", "origen": {"archivo": "cv.md", "fragmento": "- Construí 8 cuadros de mando en Power BI para el equipo de operaciones."}},
+  {"frase": "Reduje un 25 % el tiempo de preparación de informes.", "origen": {"archivo": "cv.md", "fragmento": "- Reduje un 25 % el tiempo de preparación de informes."}},
+  {"frase": "Python, SQL, Power BI, Excel", "origen": {"archivo": "cv.md", "fragmento": "Python, SQL, Power BI, Excel"}},
+  {"frase": "Administrativa · Gestoría Imaginaria S.L. · 2016–2020", "origen": {"archivo": "cv.md", "fragmento": "### Administrativa · Gestoría Imaginaria S.L. · 2016–2020"}},
+  {"frase": "gestión de la contabilidad de 35 clientes autónomos.", "origen": {"archivo": "cv.md", "fragmento": "- Gestioné la contabilidad de 35 clientes autónomos."}},
+  {"frase": "- Español (nativo), inglés B2", "origen": {"archivo": "cv.md", "fragmento": "- Español (nativo), inglés B2"}}
+]

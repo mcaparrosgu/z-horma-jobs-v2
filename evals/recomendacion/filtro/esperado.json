@@ -1,0 +1,6 @@
+{
+  "descripcion": "Oferta 001 pasa con la máxima coincidencia; 002 pasa sin sueldo publicado (no se descarta); 003 se descarta por país; 004 se descarta por sueldo bajo; 005 se descarta por presencial. Orden esperado: 001, 002.",
+  "orden": ["of-001", "of-002"],
+  "sin_sueldo": ["of-002"],
+  "descartadas": ["of-003", "of-004", "of-005"]
+}

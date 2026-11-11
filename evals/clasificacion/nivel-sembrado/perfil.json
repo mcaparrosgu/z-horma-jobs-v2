@@ -1,0 +1,18 @@
+{
+  "usuaria_id": "eva-prueba",
+  "experiencias": [
+    {"cargo": "Dependienta", "empresa": "Tienda Uno", "inicio": "2004", "fin": "2012", "descripcion": ["Atención a clientes y caja."], "origen": {"archivo": "cv-eva.txt", "fragmento": "Dependienta · Tienda Uno · 2004–2012", "linea": 3}},
+    {"cargo": "Responsable de tienda", "empresa": "Tienda Dos", "inicio": "2012", "fin": "2024", "descripcion": ["Gestión del equipo y de la tienda."], "origen": {"archivo": "cv-eva.txt", "fragmento": "Responsable de tienda · Tienda Dos · 2012–2024", "linea": 6}},
+    {"cargo": "Analista de datos junior", "empresa": "Empresa Tres", "inicio": "2024", "fin": "2025", "descripcion": ["Informes con SQL y Power BI."], "origen": {"archivo": "cv-eva.txt", "fragmento": "Analista de datos junior · Empresa Tres · 2024–2025", "linea": 9}}
+  ],
+  "formacion": [
+    {"titulo": "Bootcamp de análisis de datos", "centro": "Escuela Cuatro", "inicio": "2023", "fin": "2024", "origen": {"archivo": "cv-eva.txt", "fragmento": "Bootcamp de análisis de datos · Escuela Cuatro · 2023–2024", "linea": 12}}
+  ],
+  "skills": [
+    {"nombre": "SQL", "origen": {"archivo": "cv-eva.txt", "fragmento": "SQL", "linea": 15}},
+    {"nombre": "Power BI", "origen": {"archivo": "cv-eva.txt", "fragmento": "Power BI", "linea": 15}}
+  ],
+  "idiomas": [],
+  "taxonomia": {"sectores": [], "familias": [], "nivel": null},
+  "preguntas_pendientes": []
+}

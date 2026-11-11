@@ -1,0 +1,12 @@
+{
+  "nota": "Preguntas que el redactor-carta devolvió a Ana (8-nov-2026). El esquema candidatura no tiene sitio para ellas y la web no las muestra: hallazgo de la pasada. Ana es ficticia: sus respuestas serán de prueba.",
+  "esenciales": [
+    "¿Qué te atrae de este puesto? La carta abre con un hecho de tu CV porque no consta ningún motivo tuyo.",
+    "La oferta pide experiencia con Azure Data Factory y no consta en tu CV. ¿Has usado ADF u otra herramienta de orquestación? Si no, ¿quieres que la carta diga en llano que todavía no has trabajado con ella?"
+  ],
+  "opcionales": [
+    "La oferta pide al menos 3 años como analista de datos o BI. Tu CV solo indica 2020–2024, sin meses. ¿Quieres añadir los meses de inicio y fin?",
+    "La oferta valora conocimientos de logística y cadena de suministro. No constan en tu CV. ¿Tienes experiencia concreta en logística que quieras contar?",
+    "La oferta pide explicar los resultados al equipo no técnico. ¿Lo has hecho, por ejemplo con presentaciones, formación a usuarios o informes para otras áreas? Si es así, cuéntalo y se añade con su origen."
+  ]
+}

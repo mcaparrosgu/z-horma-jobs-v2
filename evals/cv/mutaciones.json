@@ -1,0 +1,13 @@
+{
+  "descripcion": "Casos con errores sembrados sobre evals/cv/base/. Cada caso reemplaza texto en cv.md (y, si se indica, en traza.json) y debe producir al menos un error del tipo esperado. El caso «ok» no cambia nada y debe pasar. Todos los datos son inventados.",
+  "casos": [
+    {"nombre": "ok", "cv": [], "traza": [], "esperado": null},
+    {"nombre": "cifra_inventada", "cv": [["Automaticé 12 informes", "Automaticé 25 informes"]], "traza": [["Automaticé 12 informes", "Automaticé 25 informes"]], "esperado": "cifra_no_esta_en_maestro"},
+    {"nombre": "cargo_subido", "cv": [["### Analista de datos ·", "### Director de datos ·"]], "traza": [], "esperado": "encabezado_no_coincide_con_perfil"},
+    {"nombre": "fecha_corrida", "cv": [["Taller Imaginario S.A. · 2018–2021", "Taller Imaginario S.A. · 2017–2021"]], "traza": [], "esperado": "fecha_no_esta_en_maestro"},
+    {"nombre": "empresa_cambiada", "cv": [["Distribuciones Ficticias S.L.", "Distribuciones Globales S.L."]], "traza": [], "esperado": "encabezado_no_coincide_con_perfil"},
+    {"nombre": "titulo_inflado", "cv": [["Grado en Estadística", "Máster en Estadística"]], "traza": [], "esperado": "encabezado_no_coincide_con_perfil"},
+    {"nombre": "frase_sin_origen", "cv": [["- Python, SQL, Excel", "- Python, SQL, Excel\n- Lideré un equipo de analistas."]], "traza": [], "esperado": "frase_sin_traza"},
+    {"nombre": "origen_inventado", "cv": [], "traza": [["\"fragmento\": \"Gestioné la facturación de 40 clientes.\"", "\"fragmento\": \"Dirigí la facturación global.\""]], "esperado": "origen_inexistente"}
+  ]
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "frase": "Me interesa el puesto de analista de datos junior porque el equipo de operaciones es donde ya he trabajado con datos.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones."
+    }
+  },
+  {
+    "frase": "Entre 2020 y 2024 construí 8 cuadros de mando en Power BI para el equipo de operaciones de Logística Ficticia S.A.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Analista de datos · Logística Ficticia S.A. · 2020–2024"
+    }
+  },
+  {
+    "frase": "Automaticé la carga semanal de pedidos con Python y SQL.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Automaticé la carga semanal de pedidos con Python y SQL."
+    }
+  },
+  {
+    "frase": "Reduje un 25 % el tiempo de preparación de informes.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Reduje un 25 % el tiempo de preparación de informes."
+    }
+  },
+  {
+    "frase": "En 2021 completé un curso de SQL avanzado en la Academia Inventada.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Curso de SQL avanzado · Academia Inventada · 2021"
+    }
+  },
+  {
+    "frase": "Mi nivel de inglés es B2.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Español (nativo), inglés B2"
+    }
+  },
+  {
+    "frase": "Quiero seguir trabajando con Python, SQL y Power BI en un equipo de operaciones.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Python, SQL, Power BI, Excel"
+    }
+  }
+]

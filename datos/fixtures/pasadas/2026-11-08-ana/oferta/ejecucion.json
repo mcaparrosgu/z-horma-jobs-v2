@@ -1,0 +1,15 @@
+{
+  "comando": "/publicar-oferta",
+  "fecha": "2026-11-08",
+  "fuente": "portal-empresas",
+  "entraron": 1,
+  "fallaron": 0,
+  "con_instrucciones_embebidas": 0,
+  "sospechosas_fraude": 0,
+  "sospechosas_fantasma": 0,
+  "incidencias": [
+    "extractor-oferta: la primera vuelta dejó url a null porque la cabecera del raw la traía a null (error de quien preparó el raw); se corrigió la cabecera y la url del JSON, sin repetir el agente.",
+    "auditor-oferta: el agente no está registrado en esta sesión de Claude Code; la auditoría la hizo un agente genérico con las instrucciones del auditor y solo Read. No cuenta como prueba del agente.",
+    "extractor-oferta infirió nivel 'medio' a partir de '3 años de experiencia' (permitido por su regla)."
+  ]
+}

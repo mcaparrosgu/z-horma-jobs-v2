@@ -1,0 +1,26 @@
+[
+  {
+    "requisito": "Experiencia con Azure Data Factory",
+    "propuesta": "Tu CV no menciona Azure Data Factory y no se ha añadido ni insinuado. Opciones honestas: (1) decirlo en llano en la carta, por ejemplo «todavía no he trabajado con Azure Data Factory»; (2) apoyarte en lo que sí consta: automatizaste la carga semanal de pedidos con Python y SQL, que es el mismo tipo de tarea (cargas de datos automatizadas). Si has usado ADF u otra herramienta de orquestación y no está en el CV, dínoslo para añadirlo con su origen.",
+    "decision": "pendiente",
+    "relleno_aviso": null
+  },
+  {
+    "requisito": "Al menos 3 años de experiencia como analista de datos o BI",
+    "propuesta": "El CV muestra Analista de datos 2020–2024, y la oferta pide al menos 3 años. Solo constan años, sin meses, así que no se calcula la duración exacta ni se afirma en el CV. Si quieres, añade los meses de inicio y fin para que quede claro.",
+    "decision": "pendiente",
+    "relleno_aviso": null
+  },
+  {
+    "requisito": "Se valora: conocimientos de logística y cadena de suministro",
+    "propuesta": "El CV no recoge conocimientos de logística ni de cadena de suministro; solo consta que hiciste cuadros de mando para el equipo de operaciones y la carga de pedidos. No se ha inferido nada del nombre de la empresa. Si tienes experiencia concreta en logística, cuéntala y se añade con su origen.",
+    "decision": "pendiente",
+    "relleno_aviso": null
+  },
+  {
+    "requisito": "Explicar los resultados al equipo no técnico",
+    "propuesta": "El CV no menciona esta tarea. Si lo has hecho (presentaciones, formación a usuarios, informes para otras áreas), cuéntalo y se añade con su origen. Si no, puedes decirlo con franqueza en la carta.",
+    "decision": "pendiente",
+    "relleno_aviso": null
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "id": "portal-empresas-retail-piloto-bi-b5554bbb",
+  "fuente": "portal-empresas",
+  "url": "http://localhost:3000/ofertas",
+  "fecha": "2026-11-06",
+  "titulo": "Analista de Business Intelligence",
+  "descripcion": "Buscamos una persona analista de Business Intelligence para el equipo de Operaciones y Logística. Te encargarás de construir y mantener cuadros de mando, automatizar informes y explicar los resultados al equipo no técnico.",
+  "empresa": "Retail Piloto S.A.",
+  "ubicacion": "Madrid (híbrido, 3 días en oficina)",
+  "pais": "ES",
+  "remoto": "hibrido",
+  "contrato": "indefinido",
+  "idioma": "español",
+  "nivel": "medio",
+  "requisitos": [
+    "Al menos 3 años de experiencia como analista de datos o BI",
+    "SQL avanzado",
+    "Power BI (cuadros de mando)",
+    "Python para automatizar cargas de datos",
+    "Experiencia con Azure Data Factory",
+    "Inglés B2 o superior",
+    "Se valora: conocimientos de logística y cadena de suministro"
+  ],
+  "origen": {"licencia": "empresa", "atribucion": "Retail Piloto S.A."},
+  "salario": {"publicado": true, "min": 34000, "max": 40000, "moneda": "€", "periodo": "anual"},
+  "taxonomia": {
+    "sector": "datos",
+    "familia": "analisis de datos",
+    "stack": ["SQL", "Power BI", "Python", "Azure Data Factory"]
+  },
+  "auditoria": {
+    "fantasma": {
+      "sospechosa": false,
+      "motivos": [
+        "Trae fecha de publicación (6/11/2026) y nombra la empresa (Retail Piloto S.A.).",
+        "Describe tareas concretas (cuadros de mando, automatizar informes) y requisitos específicos (SQL, Power BI, Azure Data Factory), por lo que no es genérica.",
+        "No se ha podido comprobar si está repetida en otras fuentes; solo se dispone de este texto."
+      ]
+    },
+    "fraude": {
+      "sospechosa": false,
+      "motivos": [
+        "El texto no pide dinero, datos bancarios ni documentos de identidad.",
+        "El texto no incluye ningún correo de contacto, por lo que no hay correo gratuito que señalar.",
+        "Publica salario y condiciones coherentes con el puesto (34.000-40.000 € brutos anuales, contrato indefinido)."
+      ]
+    },
+    "empresa_validada": {
+      "valor": "no_comprobada",
+      "motivo": "La oferta no indica dominio ni web de la empresa (la URL es localhost, del entorno de pruebas) y no se ha consultado la web, así que no se ha comprobado ningún dominio real."
+    },
+    "transparencia": {"salario_publicado": true, "frase_para_pedirlo": null},
+    "instrucciones_embebidas": []
+  }
+}

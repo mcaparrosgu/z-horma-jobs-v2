@@ -1,0 +1,16 @@
+{
+  "comando": "/publicar-oferta",
+  "fecha": "2026-11-09",
+  "fuente": "portal-empresas",
+  "entraron": 1,
+  "fallaron": 0,
+  "con_instrucciones_embebidas": 0,
+  "sospechosas_fraude": 0,
+  "sospechosas_fantasma": 0,
+  "incidencias": [
+    "extractor-oferta puso nivel 'junior' sin que el texto lo diga (la oferta pide 2 años y liderar proyectos); clasificador-oferta lo corrigió a 'no_indicado' y se aplicó esa corrección.",
+    "extractor-oferta metió 'Se valora…' dentro de requisitos; queda como requisito en la lista (límite conocido del esquema, que no distingue valorado de exigido).",
+    "auditor-oferta avisa de posible incoherencia entre pedir experiencia liderando proyectos y la etiqueta junior (resuelta al quedar el nivel como no_indicado); la oferta no trae contacto, y el salario ya está publicado.",
+    "empresa_validada: no_comprobada (la URL es localhost de pruebas)."
+  ]
+}

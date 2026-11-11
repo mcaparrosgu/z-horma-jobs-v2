@@ -1,0 +1,11 @@
+{
+  "descripcion": "Con el CV base de evals/cv/base: Python, SQL y Excel están en el CV; Power BI, Tableau e Inglés B2 no están en el perfil (faltantes sin origen). 3 de 6 claves = 0.5. El requisito largo no se mide. «(se valora)» se ignora.",
+  "cobertura": 0.5,
+  "faltantes_con_origen": [],
+  "faltantes_sin_origen": [
+    "Power BI",
+    "Tableau",
+    "Inglés B2"
+  ],
+  "no_medidos": 1
+}

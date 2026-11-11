@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "oferta",
+  "type": "object",
+  "required": ["id", "fuente", "url", "fecha", "titulo", "empresa", "ubicacion", "remoto", "contrato", "idioma", "nivel", "requisitos", "salario", "taxonomia", "auditoria"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_-][A-Za-z0-9_.-]{0,79}$"},
+    "fuente": {"type": "string"},
+    "url": {"type": "string"},
+    "fecha": {"type": ["string", "null"], "description": "AAAA-MM-DD de publicación; null si la oferta no la trae"},
+    "fecha_cierre": {"type": ["string", "null"], "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$", "description": "AAAA-MM-DD en que la oferta cierra (plazo), solo si la fuente lo da; null o ausente si no. Una oferta con fecha_cierre anterior a hoy no se muestra ni se recomienda."},
+    "titulo": {"type": "string"},
+    "descripcion": {"type": "string", "maxLength": 8000, "description": "Texto plano de la oferta (opcional). Lo rellena la empresa al publicar en el portal de Horma; las ofertas traídas por agentes no lo traen."},
+    "empresa": {"type": "string"},
+    "ubicacion": {"type": "string"},
+    "pais": {"type": ["string", "null"], "description": "Código ISO de 2 letras si se deduce del texto"},
+    "remoto": {"enum": ["presencial", "hibrido", "remoto", "no_indicado"]},
+    "contrato": {"type": "string"},
+    "idioma": {"type": "string", "description": "Idioma de trabajo: nombre en español y minúsculas (español, inglés). Mismo formato que perfil.idiomas, para que el filtro duro case."},
+    "nivel": {"enum": ["practicas", "junior", "medio", "senior", "direccion", "no_indicado"]},
+    "requisitos": {"type": "array", "items": {"type": "string"}},
+    "avisos": {
+      "type": "array",
+      "description": "Condiciones de la oferta sobre la persona que NO son competencias (ciudadanía, habilitación de seguridad, residencia o permiso de trabajo). Se muestran a la usuaria como aviso informativo; NUNCA entran en la nota, el filtro ni lo que ve una empresa. Opcional.",
+      "items": {
+        "type": "object",
+        "required": ["tipo", "texto"],
+        "additionalProperties": false,
+        "properties": {
+          "tipo": {"enum": ["ciudadania", "habilitacion_seguridad", "residencia_o_permiso", "otro"]},
+          "texto": {"type": "string"}
+        }
+      }
+    },
+    "origen": {
+      "type": "object",
+      "description": "Con qué permiso tiene Horma esta oferta. Lo copia el extractor de la cabecera del raw (la fija el script según la fuente); no se deduce. La web enseña siempre el enlace a la original. Opcional.",
+      "required": ["licencia", "atribucion"],
+      "additionalProperties": false,
+      "properties": {
+        "licencia": {"enum": ["empresa", "socio", "abierto", "usuaria"]},
+        "atribucion": {"type": ["string", "null"], "maxLength": 200, "description": "Texto que hay que mostrar junto a la oferta (p. ej. «Fuente de los datos: …»); null si la licencia no pide citar"}
+      }
+    },
+    "salario": {
+      "type": "object",
+      "required": ["publicado", "min", "max", "moneda"],
+      "additionalProperties": false,
+      "properties": {
+        "publicado": {"type": "boolean"},
+        "min": {"type": ["number", "null"]},
+        "max": {"type": ["number", "null"]},
+        "moneda": {"type": ["string", "null"]},
+        "periodo": {"enum": ["anual", "mensual", "hora", null]}
+      }
+    },
+    "taxonomia": {
+      "type": "object",
+      "required": ["sector", "familia", "stack"],
+      "additionalProperties": false,
+      "properties": {
+        "sector": {"type": ["string", "null"]},
+        "familia": {"type": ["string", "null"]},
+        "stack": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "auditoria": {
+      "type": "object",
+      "required": ["fantasma", "fraude", "empresa_validada", "instrucciones_embebidas"],
+      "additionalProperties": false,
+      "properties": {
+        "fantasma": {"type": "object", "properties": {"sospechosa": {"type": "boolean"}, "motivos": {"type": "array", "items": {"type": "string"}}}},
+        "fraude": {"type": "object", "properties": {"sospechosa": {"type": "boolean"}, "motivos": {"type": "array", "items": {"type": "string"}}}},
+        "empresa_validada": {"type": "object", "properties": {"valor": {"enum": ["si", "no", "no_comprobada"]}, "motivo": {"type": "string"}}},
+        "transparencia": {"type": "object", "properties": {"salario_publicado": {"type": "boolean"}, "frase_para_pedirlo": {"type": ["string", "null"]}}},
+        "instrucciones_embebidas": {"type": "array", "items": {"type": "string"}, "description": "Textos de la oferta dirigidos a un agente. Se copian aquí y NO se siguen."}
+      }
+    }
+  }
+}

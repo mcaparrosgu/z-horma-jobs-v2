@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "calificacion-fuente",
+  "type": "object",
+  "required": ["url", "permite_lectura_automatizada", "tiene_api", "cubre_espana", "cubre_ue", "volumen_estimado", "nota", "apta"],
+  "additionalProperties": false,
+  "properties": {
+    "url": {"type": "string"},
+    "fecha_revision": {"type": "string"},
+    "permite_lectura_automatizada": {"enum": ["si", "no", "no_claro"]},
+    "tiene_api": {"type": "boolean"},
+    "cubre_espana": {"type": "boolean"},
+    "cubre_ue": {"type": "boolean"},
+    "volumen_estimado": {"type": ["string", "null"]},
+    "nota": {"type": "string", "description": "Qué páginas se leyeron (condiciones, robots.txt) y qué dicen"},
+    "apta": {"type": "boolean", "description": "Siempre false para LinkedIn e Indeed, por regla y no por calificación"}
+  }
+}

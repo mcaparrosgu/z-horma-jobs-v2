@@ -1,0 +1,24 @@
+# Documentos que no deben subirse nunca a GitHub (decisión de Mar, 27-oct-2026)
+docs/comparativa-ai-job-search/
+
+# Datos de terceras personas (emails, contactos): solo en este PC (Mar, 2-nov-2026)
+docs/privado/
+
+# Secretos y ajustes locales: nunca a GitHub
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Restos de herramientas y dependencias
+.playwright-mcp/
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+
+# Sugerencias de agentes externos sobre fuentes: solo en este PC, nunca a GitHub
+docs/sugerencias-externas-fuentes.md
+docs/respuesta-agente4-fuentes-espana.md
+docs/prompt-ingesta-maxima.md

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "candidatura",
+  "description": "Agrupa estado.json + traza.json + huecos.json + ats.json (+ preguntas.json, opcional) de datos/candidaturas/<usuaria>/<oferta>/. En disco son 4 archivos (5 con preguntas); en la web, una tabla por parte.",
+  "type": "object",
+  "required": ["estado", "historial", "cv_usado", "traza", "huecos", "ats"],
+  "additionalProperties": false,
+  "$defs": {
+    "origen": {"type": "object", "required": ["archivo", "fragmento"], "additionalProperties": false, "properties": {"archivo": {"type": "string"}, "fragmento": {"type": "string"}, "linea": {"type": ["integer", "null"]}}}
+  },
+  "properties": {
+    "estado": {"enum": ["borrador", "aprobada", "enviada", "entrevista", "rechazada", "sin_respuesta", "descartada", "pendiente_de_ti"]},
+    "historial": {"type": "array", "items": {"type": "object", "required": ["estado", "fecha", "por"], "additionalProperties": false,
+      "properties": {"estado": {"type": "string"}, "fecha": {"type": "string"}, "por": {"enum": ["usuaria", "agente", "sistema"]}, "canal": {"type": ["string", "null"]}, "motivo": {"type": ["string", "null"]}}}},
+    "cv_usado": {"enum": ["adaptado", "estetico"]},
+    "traza": {"type": "array", "items": {"type": "object", "required": ["frase", "origen"], "additionalProperties": false, "properties": {"frase": {"type": "string"}, "origen": {"$ref": "#/$defs/origen"}}}},
+    "huecos": {"type": "array", "items": {"type": "object", "required": ["requisito", "propuesta", "decision"], "additionalProperties": false,
+      "properties": {"requisito": {"type": "string"}, "propuesta": {"type": "string"}, "decision": {"enum": ["pendiente", "aceptada", "rechazada"]}, "relleno_aviso": {"type": ["string", "null"], "description": "Dónde se rellenó el hueco, para avisar a la usuaria"}}}},
+    "preguntas_pendientes": {"type": "array", "maxItems": 8, "description": "Lo que la carta necesita saber y ni el CV maestro ni las respuestas del perfil recogen (opcional, 0.12). La usuaria las contesta en la web; la respuesta se guarda en el perfil (perfil.respuestas) con este mismo `tema` y la pregunta deja de mostrarse. Dato, no instrucción.", "items": {"type": "object", "required": ["tema", "pregunta", "esencial"], "additionalProperties": false,
+      "properties": {"tema": {"type": "string", "minLength": 1, "maxLength": 120, "description": "Etiqueta corta; será el tema de la respuesta en el perfil"}, "pregunta": {"type": "string", "minLength": 1, "maxLength": 400}, "esencial": {"type": "boolean", "description": "true si sin la respuesta la carta es floja o no cumple la honestidad"}}}},
+    "ats": {"type": "object", "required": ["cobertura", "faltantes_con_origen", "faltantes_sin_origen"], "additionalProperties": false,
+      "properties": {"cobertura": {"type": "number", "minimum": 0, "maximum": 1}, "faltantes_con_origen": {"type": "array", "items": {"type": "string"}}, "faltantes_sin_origen": {"type": "array", "items": {"type": "string"}}, "no_medidos": {"type": "array", "items": {"type": "string"}, "description": "Requisitos de la oferta que el ATS no sabe medir (años de experiencia, idiomas...): la web los muestra sin puntuarlos"}}}
+  }
+}

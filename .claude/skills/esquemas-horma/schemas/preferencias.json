@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "preferencias",
+  "description": "Salen solo del CV y las edita la usuaria. Nunca edad, nacionalidad ni categorías del art. 9 RGPD.",
+  "type": "object",
+  "required": ["puestos", "paises", "remoto", "contrato", "idiomas", "sueldo_min", "rango_compatibilidad"],
+  "additionalProperties": false,
+  "properties": {
+    "puestos": {"type": "array", "items": {"type": "string"}},
+    "ciudades": {"type": "array", "items": {"type": "string"}},
+    "paises": {"type": "array", "items": {"type": "string"}},
+    "remoto": {"type": "array", "items": {"enum": ["presencial", "hibrido", "remoto"]}},
+    "contrato": {"type": "array", "items": {"type": "string"}},
+    "idiomas": {"type": "array", "items": {"type": "string"}},
+    "sectores": {"type": "array", "items": {"type": "string"}},
+    "niveles": {"type": "array", "items": {"type": "string"}},
+    "horario": {"type": "array", "items": {"enum": ["manana", "tarde", "noche", "flexible"]}},
+    "sueldo_min": {"type": ["number", "null"]},
+    "rango_compatibilidad": {"type": "array", "items": {"type": "integer", "minimum": 0, "maximum": 100}, "minItems": 2, "maxItems": 2}
+  }
+}

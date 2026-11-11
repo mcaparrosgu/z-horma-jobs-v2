@@ -1,0 +1,81 @@
+{
+  "fuentes": [
+    {
+      "nombre": "JobTech Suecia (Platsbanken)",
+      "url": "https://jobsearch.api.jobtechdev.se/search",
+      "metodo": "GET",
+      "parametros": {
+        "q": "developer",
+        "limit": "20"
+      },
+      "cabeceras": {
+        "Accept": "application/json"
+      },
+      "clave_env": null,
+      "clave_en": null,
+      "clave_nombre": null,
+      "mapeo_campos": {
+        "lista": "hits",
+        "id": "id",
+        "titulo": "headline",
+        "empresa": "employer.name",
+        "url": "webpage_url",
+        "descripcion": "description.text",
+        "fecha": "publication_date"
+      },
+      "licencia": "abierto",
+      "atribucion": null,
+      "activa": false
+    },
+    {
+      "nombre": "BOE Empleo público (sección II.B)",
+      "url": "https://www.boe.es/datosabiertos/api/boe/sumario/{fecha}",
+      "metodo": "GET",
+      "parametros": {},
+      "cabeceras": {
+        "Accept": "application/json"
+      },
+      "clave_env": null,
+      "clave_en": null,
+      "clave_nombre": null,
+      "adaptador": "boe-sumario",
+      "mapeo_campos": {
+        "lista": "",
+        "id": "id",
+        "titulo": "titulo",
+        "empresa": "empresa",
+        "url": "url",
+        "descripcion": "descripcion",
+        "fecha": "fecha"
+      },
+      "licencia": "abierto",
+      "atribucion": "Fuente de los datos: Agencia Estatal Boletín Oficial del Estado (boe.es). Datos reorganizados por Horma; no es una publicación oficial.",
+      "activa": true
+    },
+    {
+      "nombre": "Feina Activa (Cataluña)",
+      "url": "https://feinaactiva.gencat.cat/api/offers/offers-xml",
+      "metodo": "GET",
+      "parametros": {},
+      "cabeceras": {
+        "Accept": "application/xml"
+      },
+      "clave_env": null,
+      "clave_en": null,
+      "clave_nombre": null,
+      "adaptador": "feinaactiva-xml",
+      "mapeo_campos": {
+        "lista": "",
+        "id": "id",
+        "titulo": "titulo",
+        "empresa": "empresa",
+        "url": "url",
+        "descripcion": "descripcion",
+        "fecha": "fecha"
+      },
+      "licencia": "abierto",
+      "atribucion": "Generalitat de Catalunya (Feina Activa, datos abiertos). Datos reorganizados por Horma.",
+      "activa": true
+    }
+  ]
+}

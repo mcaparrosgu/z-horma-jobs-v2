@@ -1,0 +1,51 @@
+[
+  {
+    "frase": "Me interesa el puesto de analista de datos junior porque es trabajo para el equipo de operaciones, el mismo para el que trabajé entre 2020 y 2024 en Logística Ficticia S.A.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv-base/datos/cv.md",
+      "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones."
+    }
+  },
+  {
+    "frase": "Allí construí 8 cuadros de mando en Power BI para operaciones.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv-base/datos/cv.md",
+      "fragmento": "Construí 8 cuadros de mando en Power BI para el equipo de operaciones."
+    }
+  },
+  {
+    "frase": "También automaticé la carga semanal de pedidos con Python y SQL.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv-base/datos/cv.md",
+      "fragmento": "Automaticé la carga semanal de pedidos con Python y SQL."
+    }
+  },
+  {
+    "frase": "Con ello reduje un 25 % el tiempo de preparación de informes.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv-base/datos/cv.md",
+      "fragmento": "Reduje un 25 % el tiempo de preparación de informes."
+    }
+  },
+  {
+    "frase": "En 2021 hice un curso de SQL avanzado.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Curso de SQL avanzado · Academia Inventada · 2021"
+    }
+  },
+  {
+    "frase": "Antes de pasar a datos trabajé cuatro años como administrativa en una gestoría, donde llevé la contabilidad de 35 clientes autónomos.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "Gestioné la contabilidad de 35 clientes autónomos."
+    }
+  },
+  {
+    "frase": "Mi inglés es de nivel B2.",
+    "origen": {
+      "archivo": "datos/fixtures/perfiles/ana-datos/cv.md",
+      "fragmento": "inglés B2"
+    }
+  }
+]

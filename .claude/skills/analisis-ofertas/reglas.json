@@ -1,0 +1,880 @@
+{
+  "version": "0.1 (10-nov-2026)",
+  "nota": "Reglas del análisis de ofertas en código (sin LLM). Palabras sin tildes y en minúsculas; un * al final = cualquier terminación (enfermer* → enfermero, enfermera). Hecho para ampliarse a mano: si una familia sale mal, se añade aquí la palabra, nunca se inventa una categoría. Las familias y sectores son EXACTAMENTE los de la skill taxonomia-horma.",
+  "umbral_puntos": 3,
+  "familias": {
+    "analisis de datos": {
+      "sector": "datos",
+      "palabras": [
+        "analista de datos",
+        "data analyst",
+        "business intelligence",
+        "power bi",
+        "tableau",
+        "cuadros de mando",
+        "dashboard*",
+        "analisis de datos",
+        "analista bi",
+        "analista de negocio"
+      ]
+    },
+    "ingenieria de datos": {
+      "sector": "datos",
+      "palabras": [
+        "ingeniero de datos",
+        "data engineer",
+        "etl",
+        "pipeline* de datos",
+        "data warehouse",
+        "spark",
+        "airflow",
+        "big data"
+      ]
+    },
+    "ciencia de datos": {
+      "sector": "datos",
+      "palabras": [
+        "cientifico de datos",
+        "data scientist",
+        "machine learning",
+        "aprendizaje automatico",
+        "modelos predictivos",
+        "estadistica avanzada"
+      ]
+    },
+    "inteligencia artificial": {
+      "sector": "datos",
+      "palabras": [
+        "inteligencia artificial",
+        "ia generativa",
+        "llm",
+        "deep learning",
+        "nlp",
+        "ingeniero de ia",
+        "ai engineer",
+        "chatbot*",
+        "agentes de ia",
+        "genai",
+        "gen ai",
+        "ai developer"
+      ]
+    },
+    "desarrollo backend": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "backend",
+        "back-end",
+        "back end",
+        "desarrollador java",
+        "desarrollador de software",
+        "programador*",
+        "api rest",
+        "spring",
+        "django",
+        "node.js",
+        "microservicios",
+        ".net",
+        "php",
+        "desenvolupador",
+        "golang"
+      ]
+    },
+    "desarrollo frontend": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "frontend",
+        "front-end",
+        "front end",
+        "react",
+        "angular",
+        "vue",
+        "css",
+        "desarrollador web",
+        "maquetador web"
+      ]
+    },
+    "desarrollo full stack": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "full stack",
+        "fullstack",
+        "full-stack"
+      ]
+    },
+    "devops": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "devops",
+        "sre",
+        "kubernetes",
+        "docker",
+        "ci/cd",
+        "administrador de sistemas",
+        "sysadmin",
+        "infraestructura cloud",
+        "terraform"
+      ]
+    },
+    "calidad y testing": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "qa",
+        "tester",
+        "testing",
+        "pruebas automatizadas",
+        "selenium",
+        "cypress",
+        "ingeniero de calidad de software"
+      ]
+    },
+    "producto digital": {
+      "sector": "desarrollo de software",
+      "palabras": [
+        "product owner",
+        "product manager",
+        "scrum master",
+        "gestor de producto digital",
+        "jefe de producto digital"
+      ]
+    },
+    "diseno grafico": {
+      "sector": "diseno y creatividad",
+      "palabras": [
+        "disenador grafico",
+        "diseno grafico",
+        "disenadora grafica",
+        "illustrator",
+        "indesign",
+        "photoshop",
+        "maquetacion",
+        "identidad corporativa",
+        "cartel*",
+        "preimpresion",
+        "packaging"
+      ]
+    },
+    "diseno de producto": {
+      "sector": "diseno y creatividad",
+      "palabras": [
+        "ux",
+        "ui",
+        "ux/ui",
+        "disenador de producto",
+        "figma",
+        "experiencia de usuario",
+        "diseno de interfaces",
+        "prototipado"
+      ]
+    },
+    "contenido y redaccion": {
+      "sector": "diseno y creatividad",
+      "palabras": [
+        "redactor*",
+        "copywriter",
+        "copywriting",
+        "content writer",
+        "creacion de contenido",
+        "creador de contenido",
+        "periodista",
+        "editor de contenidos",
+        "correccion de textos"
+      ]
+    },
+    "audiovisual": {
+      "sector": "diseno y creatividad",
+      "palabras": [
+        "audiovisual*",
+        "editor de video",
+        "montador de video",
+        "after effects",
+        "premiere",
+        "realizador",
+        "fotografo",
+        "motion graphics",
+        "animacion 2d",
+        "animacion 3d"
+      ]
+    },
+    "marketing digital": {
+      "sector": "marketing y comunicacion",
+      "palabras": [
+        "marketing digital",
+        "sem",
+        "google ads",
+        "email marketing",
+        "growth",
+        "performance marketing",
+        "campanas digitales",
+        "ecommerce",
+        "responsable de marketing",
+        "marketing manager"
+      ]
+    },
+    "comunicacion y prensa": {
+      "sector": "marketing y comunicacion",
+      "palabras": [
+        "comunicacion corporativa",
+        "relaciones publicas",
+        "jefe de prensa",
+        "gabinete de prensa",
+        "notas de prensa",
+        "comunicacion interna"
+      ]
+    },
+    "redes sociales": {
+      "sector": "marketing y comunicacion",
+      "palabras": [
+        "community manager",
+        "redes sociales",
+        "social media",
+        "instagram",
+        "tiktok"
+      ]
+    },
+    "seo y analitica": {
+      "sector": "marketing y comunicacion",
+      "palabras": [
+        "seo",
+        "analitica web",
+        "google analytics",
+        "posicionamiento web",
+        "tag manager"
+      ]
+    },
+    "administracion": {
+      "sector": "administracion y finanzas",
+      "palabras": [
+        "administrativ*",
+        "auxiliar administrativ*",
+        "secretari*",
+        "recepcionista",
+        "gestion administrativa",
+        "back office",
+        "facturacion",
+        "tramitacion",
+        "gestor administrativ*",
+        "oficinista",
+        "administracio"
+      ]
+    },
+    "contabilidad": {
+      "sector": "administracion y finanzas",
+      "palabras": [
+        "contable",
+        "contabilidad",
+        "contabilitat",
+        "asesor fiscal",
+        "impuestos",
+        "conciliacion bancaria",
+        "cierre contable",
+        "auditor*"
+      ]
+    },
+    "finanzas": {
+      "sector": "administracion y finanzas",
+      "palabras": [
+        "controller",
+        "controlling",
+        "financier*",
+        "analista financiero",
+        "tesoreria",
+        "inversion*",
+        "banca",
+        "riesgos financieros"
+      ]
+    },
+    "compras": {
+      "sector": "administracion y finanzas",
+      "palabras": [
+        "comprador*",
+        "compras",
+        "procurement",
+        "aprovisionamiento",
+        "negociacion con proveedores"
+      ]
+    },
+    "ventas": {
+      "sector": "ventas y atencion al cliente",
+      "palabras": [
+        "comercial",
+        "vendedor*",
+        "ventas",
+        "dependient*",
+        "ejecutivo de cuentas",
+        "representante comercial",
+        "asesor comercial",
+        "venedor*",
+        "tienda",
+        "cajer*",
+        "caixer*"
+      ]
+    },
+    "atencion al cliente": {
+      "sector": "ventas y atencion al cliente",
+      "palabras": [
+        "atencion al cliente",
+        "call center",
+        "teleoperador*",
+        "contact center",
+        "servicio al cliente",
+        "soporte al cliente",
+        "atencio al client",
+        "customer service",
+        "customer support"
+      ]
+    },
+    "cuentas clave": {
+      "sector": "ventas y atencion al cliente",
+      "palabras": [
+        "key account",
+        "cuentas clave",
+        "gestor de cuentas",
+        "account manager",
+        "customer success"
+      ]
+    },
+    "seleccion": {
+      "sector": "recursos humanos",
+      "palabras": [
+        "seleccion de personal",
+        "reclutador*",
+        "recruiter",
+        "talent acquisition",
+        "headhunter",
+        "captacion de talento"
+      ]
+    },
+    "formacion interna": {
+      "sector": "recursos humanos",
+      "palabras": [
+        "formacion interna",
+        "learning and development",
+        "desarrollo del talento",
+        "plan de formacion"
+      ]
+    },
+    "administracion de personal": {
+      "sector": "recursos humanos",
+      "palabras": [
+        "nominas",
+        "administracion de personal",
+        "relaciones laborales",
+        "seguridad social",
+        "contratos laborales",
+        "hr generalist",
+        "recursos humanos"
+      ]
+    },
+    "enfermeria": {
+      "sector": "sanidad",
+      "palabras": [
+        "enfermer*",
+        "infermer*",
+        "tcae",
+        "auxiliar de enfermeria",
+        "cuidados de enfermeria"
+      ]
+    },
+    "medicina": {
+      "sector": "sanidad",
+      "palabras": [
+        "medico",
+        "medica",
+        "facultativ*",
+        "medicina",
+        "pediatra",
+        "especialista medico"
+      ]
+    },
+    "farmacia": {
+      "sector": "sanidad",
+      "palabras": [
+        "farmaceutic*",
+        "farmacia",
+        "tecnico de farmacia",
+        "farmacia hospitalaria"
+      ]
+    },
+    "gestion sanitaria": {
+      "sector": "sanidad",
+      "palabras": [
+        "gestion sanitaria",
+        "documentacion clinica",
+        "admision hospitalaria",
+        "gestor sanitario"
+      ]
+    },
+    "docencia": {
+      "sector": "educacion",
+      "palabras": [
+        "profesor*",
+        "docent*",
+        "docencia",
+        "maestro",
+        "maestra",
+        "mestre",
+        "educador*",
+        "monitor de",
+        "ensenanza"
+      ]
+    },
+    "formacion": {
+      "sector": "educacion",
+      "palabras": [
+        "formador*",
+        "formadora",
+        "instructor*",
+        "formacion para el empleo",
+        "impartir cursos",
+        "impartir formacion"
+      ]
+    },
+    "orientacion": {
+      "sector": "educacion",
+      "palabras": [
+        "orientador*",
+        "orientacion laboral",
+        "orientacion educativa",
+        "psicopedagog*"
+      ]
+    },
+    "logistica": {
+      "sector": "logistica y operaciones",
+      "palabras": [
+        "logistica",
+        "logistic*",
+        "transporte",
+        "distribucion",
+        "repartidor*",
+        "conductor*",
+        "trafico",
+        "trafico de mercancias",
+        "transitario"
+      ]
+    },
+    "almacen": {
+      "sector": "logistica y operaciones",
+      "palabras": [
+        "almacen",
+        "almacenero",
+        "mozo de almacen",
+        "carretillero",
+        "carretilla elevadora",
+        "picking",
+        "magatzem",
+        "preparador de pedidos",
+        "reposicion"
+      ]
+    },
+    "operaciones": {
+      "sector": "logistica y operaciones",
+      "palabras": [
+        "operaciones",
+        "jefe de operaciones",
+        "operations manager",
+        "responsable de planta",
+        "jefe de produccion",
+        "responsable de produccion"
+      ]
+    },
+    "cadena de suministro": {
+      "sector": "logistica y operaciones",
+      "palabras": [
+        "cadena de suministro",
+        "supply chain",
+        "planificacion de la demanda",
+        "gestion de inventario",
+        "aprovisionamiento logistico"
+      ]
+    },
+    "ingenieria industrial": {
+      "sector": "ingenieria e industria",
+      "palabras": [
+        "ingeniero industrial",
+        "ingenieria industrial",
+        "ingeniero de procesos",
+        "ingeniero de produccion",
+        "plc",
+        "automatizacion industrial",
+        "cad",
+        "solidworks",
+        "autocad"
+      ]
+    },
+    "mantenimiento": {
+      "sector": "ingenieria e industria",
+      "palabras": [
+        "mantenimiento",
+        "mecanico",
+        "electricista",
+        "tecnico de mantenimiento",
+        "mantenidor*",
+        "fontanero",
+        "climatizacion",
+        "instalador*",
+        "manteniment",
+        "frigorista",
+        "operari* de mantenimiento",
+        "operario mantenimiento"
+      ]
+    },
+    "calidad industrial": {
+      "sector": "ingenieria e industria",
+      "palabras": [
+        "calidad industrial",
+        "control de calidad",
+        "iso 9001",
+        "inspector de calidad",
+        "metrologia"
+      ]
+    },
+    "construccion": {
+      "sector": "ingenieria e industria",
+      "palabras": [
+        "construccion",
+        "obra",
+        "albanil*",
+        "arquitecto*",
+        "encargado de obra",
+        "jefe de obra",
+        "topografo",
+        "peon de"
+      ]
+    },
+    "asesoria juridica": {
+      "sector": "legal",
+      "palabras": [
+        "abogad*",
+        "asesor juridico",
+        "asesoria juridica",
+        "letrado",
+        "procurador*",
+        "derecho mercantil",
+        "jurista",
+        "paralegal"
+      ]
+    },
+    "cumplimiento normativo": {
+      "sector": "legal",
+      "palabras": [
+        "compliance",
+        "cumplimiento normativo",
+        "proteccion de datos",
+        "rgpd",
+        "dpo",
+        "prevencion de blanqueo"
+      ]
+    }
+  },
+  "tecnologias": [
+    "Python",
+    "SQL",
+    "Power BI",
+    "Excel",
+    "Tableau",
+    "R Studio",
+    "Java",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Angular",
+    "Vue",
+    "Node.js",
+    "PHP",
+    "C++",
+    "C#",
+    ".NET",
+    "Go",
+    "Rust",
+    "Kotlin",
+    "Swift",
+    "Django",
+    "Flask",
+    "FastAPI",
+    "Spring",
+    "Laravel",
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "Azure",
+    "GCP",
+    "Terraform",
+    "Git",
+    "Linux",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Oracle",
+    "SAP",
+    "Salesforce",
+    "HubSpot",
+    "Spark",
+    "Airflow",
+    "Pandas",
+    "TensorFlow",
+    "PyTorch",
+    "Figma",
+    "Photoshop",
+    "Illustrator",
+    "InDesign",
+    "After Effects",
+    "Premiere",
+    "AutoCAD",
+    "SolidWorks",
+    "Jira",
+    "Scrum",
+    "Google Analytics",
+    "Google Ads",
+    "WordPress",
+    "Shopify",
+    "Selenium",
+    "Cypress",
+    "n8n",
+    "Blazor",
+    "ServiceNow",
+    "LangChain",
+    "LlamaIndex",
+    "Next.js",
+    "NestJS",
+    "Express",
+    "Supabase",
+    "Cloudflare",
+    "GitHub",
+    "GitLab",
+    "Jenkins",
+    "Confluence",
+    "Gradle",
+    "Tomcat",
+    "JBoss",
+    "WildFly",
+    "PL/SQL",
+    "Oracle SQL",
+    "Android",
+    "iOS",
+    "REST",
+    "SOAP",
+    "Streamlit",
+    "Hugging Face",
+    "Azure OpenAI",
+    "Azure Functions",
+    "Azure Data Factory",
+    "Google Cloud",
+    "ChatGPT",
+    "Claude",
+    "Copilot",
+    "OpenAI",
+    "CrewAI",
+    "AutoGen",
+    "ROS2",
+    "Flutter",
+    "Redis",
+    "Kafka",
+    "RabbitMQ",
+    "Elasticsearch",
+    "Grafana",
+    "Prometheus",
+    "Ansible",
+    "Odoo",
+    "Navision",
+    "A3",
+    "Sage",
+    "ContaPlus",
+    "Canva",
+    "Word",
+    "PowerPoint",
+    "Outlook",
+    "Notion",
+    "Slack",
+    "Zendesk",
+    "Mailchimp",
+    "Meta Ads",
+    "LinkedIn Ads",
+    "SEMrush",
+    "Hotjar",
+    "Looker",
+    "dbt",
+    "Snowflake",
+    "BigQuery",
+    "Databricks",
+    "Matplotlib",
+    "NumPy",
+    "scikit-learn"
+  ],
+  "idiomas_conocidos": [
+    "espanol",
+    "castellano",
+    "catalan",
+    "gallego",
+    "euskera",
+    "ingles",
+    "frances",
+    "aleman",
+    "italiano",
+    "portugues",
+    "sueco",
+    "arabe",
+    "chino",
+    "ruso"
+  ],
+  "se_valora": [
+    "se valora",
+    "valorable",
+    "valorables",
+    "deseable",
+    "deseables",
+    "sera un plus",
+    "un plus",
+    "es un plus",
+    "valorara",
+    "es valorable",
+    "valora"
+  ],
+  "prohibidas": [
+    "\\bedad\\b",
+    "\\bjoven(es)?\\b",
+    "\\bmenor(es)? de \\d+",
+    "\\bmayor(es)? de \\d+",
+    "\\bgenero\\b",
+    "\\bsexo\\b",
+    "\\bnacionalidad\\b",
+    "\\bestado civil\\b",
+    "\\bsoltera?\\b",
+    "\\bcasada?\\b",
+    "\\bsalud\\b",
+    "\\bdiscapacidad\\b",
+    "\\bembaraz",
+    "\\breligi",
+    "\\bpersonalidad\\b",
+    "\\bbuena presencia\\b",
+    "\\baspecto\\b"
+  ],
+  "palabras_vacias": [
+    "experiencia",
+    "conocimientos",
+    "conocimiento",
+    "capacidad",
+    "habilidad",
+    "habilidades",
+    "trabajo",
+    "equipo",
+    "equipos",
+    "valorable",
+    "deseable",
+    "persona",
+    "personas",
+    "nivel",
+    "minimo",
+    "minima",
+    "previa",
+    "previo",
+    "similar",
+    "similares",
+    "puesto",
+    "puestos",
+    "funciones",
+    "tareas",
+    "manejo",
+    "dominio",
+    "buena",
+    "buenas",
+    "bueno",
+    "buenos",
+    "alto",
+    "alta",
+    "medio",
+    "media",
+    "para",
+    "como",
+    "entre",
+    "sobre",
+    "desde",
+    "hasta",
+    "estar",
+    "tener",
+    "ser",
+    "con",
+    "sin",
+    "una",
+    "uno",
+    "unos",
+    "unas",
+    "los",
+    "las",
+    "del",
+    "por",
+    "que",
+    "anos",
+    "ano",
+    "mas",
+    "muy",
+    "bien",
+    "otro",
+    "otra",
+    "otros",
+    "otras",
+    "proactividad",
+    "responsabilidad",
+    "organizacion",
+    "autonomia",
+    "anys",
+    "empresas",
+    "empresa",
+    "experiencias",
+    "profesional",
+    "profesionales",
+    "sector",
+    "area",
+    "ambito"
+  ],
+  "sector_palabras": {
+    "desarrollo de software": [
+      "developer",
+      "software engineer",
+      "desarrollador*",
+      "programador*",
+      "software",
+      "backend",
+      "frontend",
+      "full stack",
+      "java",
+      "python",
+      "javascript",
+      "typescript",
+      "c#",
+      ".net",
+      "golang",
+      "devops",
+      "api"
+    ],
+    "datos": [
+      "data",
+      "datos",
+      "analytics",
+      "machine learning"
+    ],
+    "ingenieria e industria": [
+      "industrial",
+      "planta",
+      "mantenimiento",
+      "taller"
+    ],
+    "logistica y operaciones": [
+      "logistica",
+      "almacen",
+      "transporte",
+      "reparto"
+    ],
+    "educacion": [
+      "educacion",
+      "escuela",
+      "colegio",
+      "docente"
+    ],
+    "sanidad": [
+      "sanitari*",
+      "hospital",
+      "clinica",
+      "paciente*"
+    ]
+  }
+}

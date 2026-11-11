@@ -1,0 +1,334 @@
+{
+  "analisis_ofertas": [
+    {
+      "caso": "analisis de ofertas en código (Ran 27 tests in 1.959s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "casos_raros": [
+    {
+      "caso": "casos raros de verificar, medir-ats y buscar (Ran 31 tests in 4.674s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "fecha_cierre": [
+    {
+      "caso": "la oferta cerrada no se recomienda (Ran 3 tests in 0.464s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "cv": [
+    {
+      "caso": "ok",
+      "ok": true,
+      "esperado": null,
+      "obtenido": []
+    },
+    {
+      "caso": "cifra_inventada",
+      "ok": true,
+      "esperado": "cifra_no_esta_en_maestro",
+      "obtenido": [
+        "cifra_no_esta_en_maestro",
+        "origen_inexistente"
+      ]
+    },
+    {
+      "caso": "cargo_subido",
+      "ok": true,
+      "esperado": "encabezado_no_coincide_con_perfil",
+      "obtenido": [
+        "encabezado_no_coincide_con_perfil"
+      ]
+    },
+    {
+      "caso": "fecha_corrida",
+      "ok": true,
+      "esperado": "fecha_no_esta_en_maestro",
+      "obtenido": [
+        "encabezado_no_coincide_con_perfil",
+        "fecha_no_esta_en_maestro"
+      ]
+    },
+    {
+      "caso": "empresa_cambiada",
+      "ok": true,
+      "esperado": "encabezado_no_coincide_con_perfil",
+      "obtenido": [
+        "encabezado_no_coincide_con_perfil"
+      ]
+    },
+    {
+      "caso": "titulo_inflado",
+      "ok": true,
+      "esperado": "encabezado_no_coincide_con_perfil",
+      "obtenido": [
+        "encabezado_no_coincide_con_perfil"
+      ]
+    },
+    {
+      "caso": "frase_sin_origen",
+      "ok": true,
+      "esperado": "frase_sin_traza",
+      "obtenido": [
+        "frase_sin_traza"
+      ]
+    },
+    {
+      "caso": "origen_inventado",
+      "ok": true,
+      "esperado": "origen_inexistente",
+      "obtenido": [
+        "origen_inexistente"
+      ]
+    }
+  ],
+  "ats": [
+    {
+      "caso": "ats",
+      "ok": true,
+      "obtenido": {
+        "cobertura": 0.5,
+        "faltantes_sin_origen": [
+          "Power BI",
+          "Tableau",
+          "Inglés B2"
+        ]
+      }
+    },
+    {
+      "caso": "ats real (Ana, of-prueba-1)",
+      "ok": true,
+      "obtenido": {
+        "cobertura": 1.0,
+        "faltantes_sin_origen": []
+      }
+    }
+  ],
+  "filtro": [
+    {
+      "caso": "filtro",
+      "ok": true,
+      "obtenido": [
+        [
+          "of-001",
+          10
+        ],
+        [
+          "of-002",
+          1
+        ]
+      ]
+    }
+  ],
+  "esquemas": [
+    {
+      "caso": "calificacion-fuente.json",
+      "ok": true
+    },
+    {
+      "caso": "candidatura.json",
+      "ok": true
+    },
+    {
+      "caso": "clasificacion-respuesta.json",
+      "ok": true
+    },
+    {
+      "caso": "cv-base.json",
+      "ok": true
+    },
+    {
+      "caso": "endpoints.json",
+      "ok": true
+    },
+    {
+      "caso": "match.json",
+      "ok": true
+    },
+    {
+      "caso": "oferta.json",
+      "ok": true
+    },
+    {
+      "caso": "perfil.json",
+      "ok": true
+    },
+    {
+      "caso": "preferencias.json",
+      "ok": true
+    },
+    {
+      "caso": "cv-base.sector = sectores de taxonomia-horma",
+      "ok": true,
+      "obtenido": "[]"
+    }
+  ],
+  "fixtures": [
+    {
+      "caso": "ana-datos/perfil.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "leo-diseno/perfil.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "ana-datos/preferencias.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "leo-diseno/preferencias.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "ofertas/of-prueba-1.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "ofertas/of-prueba-2.json",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "verificar candidaturas\\of-prueba-1",
+      "ok": true
+    },
+    {
+      "caso": "verificar cv-base\\administracion",
+      "ok": true
+    },
+    {
+      "caso": "verificar cv-base\\datos",
+      "ok": true
+    },
+    {
+      "caso": "verificar evals/cv/juez (pasa; el juez LLM debe cazar el inflado)",
+      "ok": true
+    }
+  ],
+  "carta": [
+    {
+      "caso": "carta limpia pasa (saludo y firma sin traza)",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "carta sembrada: cifra 40 % rechazada",
+      "ok": true,
+      "obtenido": [
+        "cifra_no_esta_en_maestro",
+        "frase_sin_traza"
+      ]
+    },
+    {
+      "caso": "carta sembrada: saludo, despedida y firma no se reclaman",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "carta del redactor (v1) rechazada: frase pegada y cierre sin traza",
+      "ok": true,
+      "obtenido": [
+        "frase_de_traza_no_esta_en_cv",
+        "frase_sin_traza"
+      ]
+    },
+    {
+      "caso": "carta del redactor (v2) pasa el código (el juez LLM la rechaza por intención inventada)",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "carta del redactor (v3, prompt actual) pasa el código",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "respuestas": [
+    {
+      "caso": "carta de Leo con sus respuestas pasa el verificador",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "la carta no sube el verbo: «participé» no se vuelve liderar, dirigir, coordinar ni gestionar",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "sin respuesta de motivación, la carta no atribuye ninguna",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "una traza que cita una respuesta que ella no dio se rechaza",
+      "ok": true,
+      "obtenido": [
+        "origen_inexistente"
+      ]
+    }
+  ],
+  "ingesta": [
+    {
+      "caso": "tests de seguridad de la descarga (Ran 83 tests in 12.804s · OK)",
+      "ok": true,
+      "obtenido": null
+    },
+    {
+      "caso": "tests del detector de ATS (Ran 9 tests in 0.013s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "convertir": [
+    {
+      "caso": "tests del conversor de CV (Ran 5 tests in 1.004s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "verificar_formacion": [
+    {
+      "caso": "tests del verificador, formación (Ran 4 tests in 1.113s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "meses": [
+    {
+      "caso": "tests del verificador, meses (Ran 4 tests in 1.117s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "nivel_familia": [
+    {
+      "caso": "tests del nivel por familia (Ran 5 tests in 0.381s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "origenes_perfil": [
+    {
+      "caso": "tests de los origenes del perfil (Ran 6 tests in 1.016s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ],
+  "nivel_empresas": [
+    {
+      "caso": "el nivel por familia no llega a empresas (Ran 3 tests in 0.134s · OK)",
+      "ok": true,
+      "obtenido": null
+    }
+  ]
+}

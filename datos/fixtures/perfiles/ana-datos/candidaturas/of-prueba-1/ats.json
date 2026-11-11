@@ -1,0 +1,13 @@
+{
+  "cobertura": 0.75,
+  "faltantes_con_origen": [],
+  "faltantes_sin_origen": [
+    "Inglés B2 (se valora)"
+  ],
+  "presentes": [
+    "SQL",
+    "Python",
+    "Power BI"
+  ],
+  "no_medidos": []
+}

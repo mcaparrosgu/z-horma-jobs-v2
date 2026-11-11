@@ -1,0 +1,23 @@
+{
+  "usuaria_id": "marta-ejemplo",
+  "experiencias": [
+    {"cargo": "Analista de datos", "empresa": "Distribuciones Ficticias S.L.", "inicio": "2021", "fin": "2024",
+     "descripcion": ["Automaticé 12 informes mensuales con Python y SQL.", "Reduje un 30 % el tiempo de cierre contable con un script propio."],
+     "origen": {"archivo": "cv-maestro.md", "fragmento": "Analista de datos · Distribuciones Ficticias S.L. · 2021–2024", "linea": 4}},
+    {"cargo": "Auxiliar administrativa", "empresa": "Taller Imaginario S.A.", "inicio": "2018", "fin": "2021",
+     "descripcion": ["Gestioné la facturación de 40 clientes."],
+     "origen": {"archivo": "cv-maestro.md", "fragmento": "Auxiliar administrativa · Taller Imaginario S.A. · 2018–2021", "linea": 8}}
+  ],
+  "formacion": [
+    {"titulo": "Grado en Estadística", "centro": "Universidad Ficticia", "inicio": null, "fin": "2018",
+     "origen": {"archivo": "cv-maestro.md", "fragmento": "Grado en Estadística · Universidad Ficticia · 2018", "linea": 12}}
+  ],
+  "skills": [
+    {"nombre": "Python", "origen": {"archivo": "cv-maestro.md", "fragmento": "Python, SQL, Excel", "linea": 15}},
+    {"nombre": "SQL", "origen": {"archivo": "cv-maestro.md", "fragmento": "Python, SQL, Excel", "linea": 15}},
+    {"nombre": "Excel", "origen": {"archivo": "cv-maestro.md", "fragmento": "Python, SQL, Excel", "linea": 15}}
+  ],
+  "idiomas": [],
+  "taxonomia": {"sectores": ["datos"], "familias": ["analisis de datos"], "nivel": "medio", "stack": ["Python", "SQL", "Excel"]},
+  "preguntas_pendientes": []
+}
