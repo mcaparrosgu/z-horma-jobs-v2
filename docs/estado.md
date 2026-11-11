@@ -22,7 +22,7 @@
 Verificación de correo y recuperar contraseña; límite por IP en login y registro; dominio propio y cookie `__Host-`; probar Google con credenciales reales; texto de privacidad revisado.
 
 ## Ramas
-Minijuegos, tiendas de apps, servidor MCP, envío automático con supervisor.
+Minijuegos, tiendas de apps, servidor MCP. El envío automático con supervisor es **tronco** (Mar, 11-nov): sigue por construir.
 
 ## Artefactos (11-nov)
 Cuatro páginas, no más. Mar: [Horma por dentro](https://claude.ai/artifact/QBkk83ZVbjHC97kNq1y9xH), [Pruebas de Horma a mano](https://claude.ai/artifact/AeDdEVZyd7y4xi4mHe7nYY) y [Pruebas de agentes por consola](https://claude.ai/artifact/DQozj1WyoRq9cdQNrDNojz). Profesor: [Resumen al día](https://claude.ai/artifact/8BcKjspjFCDtNoTB7xVFL2) y su [Flujo agéntico](https://claude.ai/artifact/UEWjpE1r4f6L9mZQVpQKvq) (solo lectura).
