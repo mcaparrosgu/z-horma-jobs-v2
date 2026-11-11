@@ -13,9 +13,7 @@
 ## Siguiente
 0. Decidir si el esquema de oferta gana campos (jornada, funciones, periodo salarial, requisitos estructurados) y topes de longitud (`maxLength` en título, requisitos y `motivos`).
 0b. Pendiente (línea roja, ya existía): el ATS no descarta requisitos prohibidos («Menor de 30 años», «certificado de discapacidad»).
-0c. Web: mostrar «basada en N requisitos · poco fiable» junto a la nota.
-0d. Nota: un requisito obligatorio con «(es valorarà…)» dentro pesa la mitad, como si fuera un «se valora».
-1. Portar el análisis de ofertas a TypeScript para la web (contrato: `evals/recomendacion/golden-analisis.json`).
+0c. Web: mostrar «basada en N requisitos · poco fiable» junto a la nota.1. Portar el análisis de ofertas a TypeScript para la web (contrato: `evals/recomendacion/golden-analisis.json`).
 2. Construir la entrevista del perfil (tronco).
 3. Plantillas de CV (3-4, aptas para ATS).
 4. Ordenar ofertas por frescura.

@@ -102,6 +102,15 @@ class Puntuar(unittest.TestCase):
         x = az.puntuar(oferta(requisitos=["SQL", "Tableau (se valora)"]), perfil(), PREFS, 2026)
         self.assertEqual(x["nota"], 67)  # 1 / (1 + 0.5)
 
+    def test_que_pesa_la_mitad_y_que_no(self):
+        def nota(reqs):
+            return az.puntuar(oferta(requisitos=reqs), perfil(), PREFS, 2026)["nota"]
+        self.assertEqual(nota(["SQL", "Valorable: Tableau"]), 67)  # marcador fuera del paréntesis: mitad
+        self.assertEqual(nota(["SQL", "Tableau (la oferta la indica como valorable)"]), 67)  # habla del requisito: mitad
+        self.assertEqual(nota(["Experiència 1 anys (es valorarà Tableau)", "Figma"]), 50)  # el paréntesis es un extra: entero
+        self.assertEqual(nota(["Experiència 1 anys (es valorarà experiència en tasques similars)", "Figma"]), 50)  # texto largo: el recorte de la explicación no cambia el peso
+        self.assertEqual(nota(["SQL", "Grado en Valoración Inmobiliaria"]), 50)  # «valoración» no es «valora»
+
     def test_idioma_con_nivel_menor_es_parcial(self):
         p = perfil(idiomas=[{"idioma": "Inglés", "nivel": "B1", "origen": ORIGEN}])
         x = az.puntuar(oferta(requisitos=["Inglés B2"]), p, PREFS, 2026)
