@@ -1,0 +1,9 @@
+{
+  "descripcion": "Oferta en catalán contra el CV base: en otro idioma solo se miden las tecnologías del stack. SQL está en el CV; A3 no está en el perfil. «Coneixement SQL» y «Coneixement A3» son las mismas claves y no se repiten. «2 anys» no se mide (años) y «comptables i fiscals» no se compara (otro idioma): ninguno es «sin origen». 1 de 2 = 0.5.",
+  "cobertura": 0.5,
+  "faltantes_con_origen": [],
+  "faltantes_sin_origen": [
+    "A3"
+  ],
+  "no_medidos": 2
+}

@@ -23,7 +23,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 SK = RAIZ / ".claude" / "skills"
-PY = [sys.executable, "-I"]
+PY = [sys.executable, "-I", "-X", "utf8"]  # -I ignora PYTHONIOENCODING: sin -X utf8, un test que falla escribe en cp1252 y rompe la lectura
 
 
 def correr(script: Path, *args):
@@ -58,16 +58,17 @@ def eval_cv():
 
 
 def eval_ats():
-    d = RAIZ / "evals" / "cv" / "ats"
-    with tempfile.TemporaryDirectory() as tmp:
-        salida = Path(tmp) / "ats.json"
-        correr(SK / "medir-ats" / "scripts" / "medir_ats.py", "--cv", RAIZ / "evals/cv/base/cv.md",
-               "--oferta", d / "oferta.json", "--perfil", RAIZ / "evals/cv/base/perfil.json", "--salida", salida)
-        got = json.loads(salida.read_text(encoding="utf-8"))
-    exp = json.loads((d / "esperado.json").read_text(encoding="utf-8"))
-    ok = (got["cobertura"] == exp["cobertura"] and got["faltantes_con_origen"] == exp["faltantes_con_origen"]
-          and got["faltantes_sin_origen"] == exp["faltantes_sin_origen"] and len(got["no_medidos"]) == exp["no_medidos"])
-    res = [{"caso": "ats", "ok": ok, "obtenido": {k: got[k] for k in ("cobertura", "faltantes_sin_origen")}}]
+    res = []
+    for d in sorted((RAIZ / "evals" / "cv").glob("ats*/")):  # ats, ats-catalan, ats-prefijos: mismo CV base
+        with tempfile.TemporaryDirectory() as tmp:
+            salida = Path(tmp) / "ats.json"
+            correr(SK / "medir-ats" / "scripts" / "medir_ats.py", "--cv", RAIZ / "evals/cv/base/cv.md",
+                   "--oferta", d / "oferta.json", "--perfil", RAIZ / "evals/cv/base/perfil.json", "--salida", salida)
+            got = json.loads(salida.read_text(encoding="utf-8"))
+        exp = json.loads((d / "esperado.json").read_text(encoding="utf-8"))
+        ok = (got["cobertura"] == exp["cobertura"] and got["faltantes_con_origen"] == exp["faltantes_con_origen"]
+              and got["faltantes_sin_origen"] == exp["faltantes_sin_origen"] and len(got["no_medidos"]) == exp["no_medidos"])
+        res.append({"caso": d.name, "ok": ok, "obtenido": {k: got[k] for k in ("cobertura", "faltantes_sin_origen", "no_medidos")}})
     # Caso real: CV adaptado por el redactor para Ana; el inglés B2 está en su CV, cobertura completa.
     ana = RAIZ / "datos" / "fixtures" / "perfiles" / "ana-datos"
     cand = ana / "candidaturas" / "of-prueba-1"

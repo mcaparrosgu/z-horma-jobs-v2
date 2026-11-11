@@ -148,15 +148,41 @@ def cmd_clasificar(a) -> int:
 # ───────────────────────── puntuar ─────────────────────────
 
 CEFR = {"a1": 1, "a2": 2, "b1": 3, "b2": 4, "c1": 5, "c2": 6}
-_ANOS = re.compile(r"(\d+)\s*\+?\s*(?:anos?|years?)")
+_U_ANOS = r"(?:anos?|anys?|years?)"  # «anys»: Feina Activa publica en catalán
+_U_MESES = r"(?:mes|meses|mesos|months?)"
+_ANOS = re.compile(r"(\d+)\s*\+?\s*" + _U_ANOS + r"(?![a-z])")
+_MESES = re.compile(r"(\d+)\s*\+?\s*" + _U_MESES + r"(?![a-z])")
+_NO_TEMA = {"anos", "anys", "years", "mes", "meses", "mesos", "months", "experiencia", "experiencias", "minimo", "minima", "menos", "como", "desarrollo"}
+# Otros nombres del mismo idioma (en catalán o variantes): se comparan por su nombre de referencia. Lista cerrada en reglas.json.
+_IDIOMA_CANON = {norm(k): norm(v) for k, v in REGLAS.get("idiomas_otros_nombres", {}).items()}
+_IDIOMAS = list(dict.fromkeys([norm(i) for i in REGLAS["idiomas_conocidos"]] + list(_IDIOMA_CANON)))
+
+
+def _canon_idioma(nombre) -> str:
+    n = norm(nombre)
+    return _IDIOMA_CANON.get(n, n)
 _VALORA = [norm(x) for x in REGLAS["se_valora"]]
 _VACIAS = {norm(x) for x in REGLAS["palabras_vacias"]}
 _GENERICAS_TITULO = {"grado", "licenciatura", "diplomatura", "master", "doctorado", "ingenieria", "ciclo", "formativo", "formacion", "profesional", "bachillerato", "titulacion", "titulo", "certificado", "certificada", "carnet", "permiso", "conducir", "universitario", "universitaria", "superior"}
 _TITULACION = re.compile(r"(?<![a-z])(grado|licenciatura|diplomatura|master|doctorado|ingenieria|ciclo formativo|formacion profesional|fp|bachillerato|titulacion|titulo de|certificad\w*|carnet|permiso de conducir)")
 
 
-def anos_de_experiencia(perfil: dict, hoy_anio: int, tema: list | None = None) -> int | None:
-    """Años cubiertos por las experiencias (unión de intervalos de años). None si no se pueden leer.
+_FECHA_MES = re.compile(r"(?<!\d)(0?[1-9]|1[0-2])\s*[/.-]\s*((?:19|20)\d{2})(?!\d)|(?<!\d)((?:19|20)\d{2})\s*[/.-]\s*(0?[1-9]|1[0-2])(?!\d)")
+
+
+def _mes(texto: str) -> int | None:
+    """Fecha como número de mes (año × 12 + mes − 1). Lee «03/2020» y «2020-03»; con solo el año cuenta enero,
+    así que dos fechas sin mes dan años de calendario, como antes."""
+    m = _FECHA_MES.search(texto)
+    if m:
+        mes, anio = (m.group(1), m.group(2)) if m.group(1) else (m.group(4), m.group(3))
+        return int(anio) * 12 + int(mes) - 1
+    a = re.search(r"(19|20)\d{2}", texto)
+    return int(a.group(0)) * 12 if a else None
+
+
+def meses_de_experiencia(perfil: dict, hoy_anio: int, tema: list | None = None) -> int | None:
+    """Meses cubiertos por las experiencias (unión de intervalos). None si no se pueden leer.
     Con `tema` (palabras ya normalizadas) solo cuentan las experiencias cuyo cargo o descripción las nombran."""
     tramos = []
     for e in perfil.get("experiencias", []):
@@ -164,14 +190,15 @@ def anos_de_experiencia(perfil: dict, hoy_anio: int, tema: list | None = None) -
             txt = norm(" ".join([e.get("cargo", "")] + (e.get("descripcion") or [])))
             if sum(1 for t in tema if _stem(t) in txt) * 2 < len(tema):  # al menos la mitad de las palabras del tema
                 continue
-        ini = re.search(r"(19|20)\d{2}", str(e.get("inicio", "")))
-        if not ini:
+        ini = _mes(str(e.get("inicio", ""))[:100])
+        if ini is None:
             continue
-        fin_txt = norm(e.get("fin", ""))
-        fin = re.search(r"(19|20)\d{2}", fin_txt)
-        f = int(fin.group(0)) if fin else (hoy_anio if re.search(r"actual|presente|ahora|hoy", fin_txt) else None)
-        if f is not None and f >= int(ini.group(0)):
-            tramos.append((int(ini.group(0)), f))
+        fin_txt = norm(e.get("fin", ""))[:100]
+        f = _mes(fin_txt)
+        if f is None and re.search(r"actual|presente|ahora|hoy", fin_txt):
+            f = hoy_anio * 12  # sin mes de hoy: enero, nunca a favor
+        if f is not None and f >= ini:
+            tramos.append((ini, f))
     if not tramos:
         return None if not tema else 0
     tramos.sort()
@@ -204,13 +231,19 @@ def _stem(t: str) -> str:
     return t[:5]
 
 
-def evaluar_requisito(req: str, perfil: dict, corpus: str, anios: int | None, hoy_anio: int) -> tuple:
-    """(valor 0-1 o None si no se puede medir, etiqueta). Solo mira el texto del requisito y el perfil."""
-    r = norm(req)
+def puesto_de(titulo: str) -> str:
+    """El título sin lo que va entre paréntesis («(substitució)», «(Barcelona)»): es el puesto, no sus condiciones."""
+    return " ".join(re.sub(r"\([^)]*\)", " ", (titulo or "")[:200]).split())  # tope: un título hostil no encarece la expresión
+
+
+def evaluar_requisito(req: str, perfil: dict, corpus: str, meses: int | None, hoy_anio: int, titulo: str = "") -> tuple:
+    """(valor 0-1 o None si no se puede medir, etiqueta). Solo mira el texto del requisito, el título de la oferta y el perfil."""
+    r = " ".join(norm(req).split())  # un solo espacio: «\s*\+?\s*» no se vuelve cuadrático con miles de espacios
     # 1) Idiomas
-    for idi in REGLAS["idiomas_conocidos"]:
-        if re.search(r"(?<![a-z])" + idi + r"(?![a-z])", r):
-            tiene = [i for i in perfil.get("idiomas", []) if norm(i.get("idioma", "")).startswith(idi[:5]) or idi.startswith(norm(i.get("idioma", ""))[:5])]
+    for idi in _IDIOMAS:
+        if re.search(r"(?<![a-z])" + re.escape(idi) + r"(?![a-z])", r):
+            c = _canon_idioma(idi)
+            tiene = [i for i in perfil.get("idiomas", []) if (p := _canon_idioma(i.get("idioma", ""))) and (p.startswith(c[:5]) or c.startswith(p[:5]))]
             if not tiene:
                 return 0.0, "idioma_falta"
             pedido = re.search(r"\b([abc][12])\b", r)
@@ -221,20 +254,31 @@ def evaluar_requisito(req: str, perfil: dict, corpus: str, anios: int | None, ho
             if pedido and not tengo:
                 return 0.5, "idioma_sin_nivel"
             return 1.0, "idioma_ok"
-    # 2) Años de experiencia
+    # 2) Años (o meses) de experiencia. Todo se compara en meses: 1 año = 12 meses (ver meses_de_experiencia).
+    patron, unidad, por = _ANOS, _U_ANOS, 12
     m = _ANOS.search(r)
+    if not m:
+        patron, unidad, por = _MESES, _U_MESES, 1
+        m = _MESES.search(r)
     if m:
-        if anios is None:
+        if meses is None:
             return None, "anios_no_medibles"
-        rango = re.search(r"(\d+)\s*(?:-|a|y|–)\s*(\d+)\s*(?:anos?|years?)", r)
-        pedidos = int(rango.group(1)) if rango else int(m.group(1))
+        rango = re.search(r"(\d+)\s*(?:-|a|y|–)\s*(\d+)\s*" + unidad, r)
+        pedidos = (int(rango.group(1)) if rango else int(m.group(1))) * por
         if pedidos == 0:
             return 1.0, "anios_ok"
-        tema = [t for t in _tokens(_ANOS.sub(" ", r)) if t not in ("anos", "years", "experiencia", "experiencias", "minimo", "menos", "como", "desarrollo")]
+        tema = [t for t in _tokens(patron.sub(" ", r)) if t not in _NO_TEMA]
+        sufijo = ""
+        if not tema:  # «Experiència 1 anys» a secas: es experiencia en el puesto de la oferta, no en cualquier cosa
+            puesto = puesto_de(titulo)
+            if es_prohibido(puesto):  # un título que habla de edad, salud, etc. no se usa ni se cita
+                return None, "anios_no_medibles"
+            tema = [t for t in _tokens(puesto) if t not in _NO_TEMA]
+            sufijo = "_puesto" if tema else ""
         if tema:  # años EN ESE TEMA, no años de cualquier cosa
-            en_tema = anos_de_experiencia(perfil, hoy_anio, tema)
-            anios = en_tema if en_tema is not None else 0
-        return (1.0, "anios_ok") if anios >= pedidos else (round(min(1.0, anios / pedidos), 2), "anios_menos")
+            en_tema = meses_de_experiencia(perfil, hoy_anio, tema)
+            meses = en_tema if en_tema is not None else 0
+        return (1.0, "anios_ok" + sufijo) if meses >= pedidos else (round(min(1.0, meses / pedidos), 2), "anios_menos" + sufijo)
     # 3) Tecnologías nombradas
     tecs = [t for t, p in _TECNOLOGIAS if p.search(req)]
     if tecs:
@@ -266,27 +310,29 @@ def _corto(t: str, n: int = 70) -> str:
     return t if len(t) <= n else t[: n - 1].rstrip() + "…"
 
 
-def _lista(xs: list, tope: int = 4) -> str:
-    xs = [_corto(x) for x in xs]
+def _lista(xs: list, tope: int = 4, largo: int = 70) -> str:
+    xs = [_corto(x, largo) for x in xs]
     return ", ".join(xs[:tope]) + (f" y {len(xs) - tope} más" if len(xs) > tope else "")
 
 
 def nota_y_detalle(o: dict, perfil: dict, hoy_anio: int) -> dict:
     reqs = [x for x in o.get("requisitos", []) if isinstance(x, str) and x.strip() and not es_prohibido(x)]
-    corpus, anios = corpus_perfil(perfil), anos_de_experiencia(perfil, hoy_anio)
+    corpus, meses = corpus_perfil(perfil), meses_de_experiencia(perfil, hoy_anio)
     peso_total = suma = 0.0
     cubre, parcial, falta, sin_medir = [], [], [], []
     for req in reqs:
-        v, et = evaluar_requisito(req, perfil, corpus, anios, hoy_anio)
+        v, et = evaluar_requisito(req, perfil, corpus, meses, hoy_anio, o.get("titulo", ""))
         if v is None:
             sin_medir.append(req)
             continue
+        if et.endswith("_puesto"):  # que se vea en qué se ha medido
+            req = f"{_corto(req, 40)}, como {_corto(puesto_de(o.get('titulo', '')), 50)}"
         w = 0.5 if any(s in norm(req) for s in _VALORA) else 1.0
         peso_total += w
         suma += w * v
         (cubre if v >= 1 else parcial if v > 0 else falta).append((req, et, v))
     nota = round(100 * suma / peso_total) if peso_total else None
-    return {"nota": nota, "cubre": cubre, "parcial": parcial, "falta": falta, "sin_medir": sin_medir, "anios": anios}
+    return {"nota": nota, "cubre": cubre, "parcial": parcial, "falta": falta, "sin_medir": sin_medir, "meses": meses}
 
 
 def condiciones(o: dict, prefs: dict) -> dict:
@@ -316,7 +362,12 @@ def condiciones(o: dict, prefs: dict) -> dict:
 def explicar(o: dict, det: dict, cond: dict) -> str:
     frases = []
     if det["nota"] is None:
-        frases.append("Sin nota: la oferta no trae requisitos concretos que medir contra tu perfil, y no se inventa una cifra.")
+        n = len(det["sin_medir"])
+        if n == 0:
+            frases.append("Sin nota: la oferta no trae requisitos concretos que medir contra tu perfil, y no se inventa una cifra.")
+        else:
+            cuales = "el único requisito de la oferta no se puede" if n == 1 else f"ninguno de los {n} requisitos de la oferta se puede"
+            frases.append(f"Sin nota: {cuales} medir con tu perfil (se miden experiencia, titulación, idiomas y tecnologías), y no se inventa una cifra.")
     else:
         medibles = len(det["cubre"]) + len(det["parcial"]) + len(det["falta"])
         s = f"Cubres {len(det['cubre'])} de {medibles} requisitos medibles"
@@ -324,7 +375,7 @@ def explicar(o: dict, det: dict, cond: dict) -> str:
             s += f" ({_lista([r for r, _, _ in det['cubre']], 5)})"
         frases.append(s + ".")
         if det["parcial"]:
-            frases.append("En parte: " + _lista([f"{r} [{_motivo(et)}]" for r, et, _ in det["parcial"]], 3) + ".")
+            frases.append("En parte: " + _lista([f"{_corto(r)} [{_motivo(et)}]" for r, et, _ in det["parcial"]], 3, 120) + ".")  # el motivo no se corta
         if det["falta"]:
             frases.append("No constan en tu perfil: " + _lista([r for r, _, _ in det["falta"]]) + ".")
         if det["sin_medir"]:
@@ -340,7 +391,7 @@ def explicar(o: dict, det: dict, cond: dict) -> str:
 
 def _motivo(et: str) -> str:
     return {"idioma_nivel_menor": "nivel inferior al pedido", "idioma_sin_nivel": "consta el idioma, no el nivel",
-            "anios_menos": "menos años de los pedidos", "tecnologia": "solo parte de lo nombrado", "palabras": "coincidencia parcial"}.get(et, "parcial")
+            "anios_menos": "menos años de los pedidos", "anios_menos_puesto": "menos tiempo en ese puesto", "tecnologia": "solo parte de lo nombrado", "palabras": "coincidencia parcial"}.get(et, "parcial")
 
 
 def puntuar(o: dict, perfil: dict, prefs: dict, hoy_anio: int) -> dict:

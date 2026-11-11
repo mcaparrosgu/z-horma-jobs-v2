@@ -4,6 +4,12 @@ docs/comparativa-ai-job-search/
 # Datos de terceras personas (emails, contactos): solo en este PC (Mar, 2-nov-2026)
 docs/privado/
 
+# Datos de usuarias y ejecuciones de la pista A: solo en este PC (Mar, 11-nov-2026). datos/fixtures/ sí se sube (datos inventados para los evals).
+datos/usuarias/
+datos/candidaturas/
+datos/matches/
+datos/ofertas/
+
 # Secretos y ajustes locales: nunca a GitHub
 .env
 .env.*

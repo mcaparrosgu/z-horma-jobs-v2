@@ -4,8 +4,13 @@
 Uso:
     python -I medir_ats.py --cv cv.md --oferta oferta.json --perfil perfil.json --salida ats.json
 
-Palabras clave = oferta.taxonomia.stack + los requisitos de hasta 4 palabras.
-Los requisitos más largos son frases libres: no se miden (salen en `no_medidos`).
+Palabras clave = oferta.taxonomia.stack + los requisitos de hasta 4 palabras, sin prefijos de relleno
+(«Conocimientos de Python» -> «Python»; «Coneixement A3» -> «A3», que no se repite si ya está).
+Salen en `no_medidos` (no verificados, nunca «sin origen»):
+  - las frases de más de 4 palabras;
+  - los años o meses de experiencia («2 años», «Experiència 2 anys»): un CV dice fechas, no cifras de años;
+  - si la oferta declara un idioma distinto del español, sus requisitos (solo se miden las tecnologías del
+    stack, que se escriben igual en todos los idiomas). No hay diccionario de traducción.
 Una palabra ausente del CV se clasifica así:
   - faltantes_con_origen: aparece en el perfil de la usuaria (se sugiere al redactor)
   - faltantes_sin_origen: no aparece en el perfil (se avisa a la usuaria; NUNCA se inserta)
@@ -38,19 +43,31 @@ def contiene(texto_n: str, clave_n: str) -> bool:
     return re.search(r"(?<![a-z0-9+#])" + re.escape(clave_n) + r"(?![a-z0-9+#])", texto_n) is not None
 
 
+TIEMPO = re.compile(r"\d+\s*\+?\s*(?:anos?|anys?|years?|mes|meses|mesos|months?)(?![a-z])")
+PREFIJO = re.compile(r"^(?:compet[eè]ncias?\s*/\s*conocimientos|compet[eè]ncies\s*/\s*coneixements|conocimientos?|coneixements?|experi[eè]ncias?)"
+                     r"(?:\s*:\s*|\s+(?:de\s+|en\s+|d['’])?)", re.IGNORECASE)
+ESPANOL = {"", "es", "espanol", "castellano", "spanish"}
+
+
 def palabras_clave(oferta: dict):
     claves, no_medidos, vistos = [], [], set()
-    candidatas = list(oferta.get("taxonomia", {}).get("stack", [])) + list(oferta.get("requisitos", []))
-    for c in candidatas:
-        c = re.sub(r"\s*\([^)]*\)", "", c[:200]).strip()  # «Inglés B2 (se valora)» -> «Inglés B2»; tope: una oferta hostil no encarece la expresión
+    otro_idioma = norm(oferta.get("idioma") or "") not in ESPANOL
+    stack = list(oferta.get("taxonomia", {}).get("stack", []))
+    for i, original in enumerate(stack + list(oferta.get("requisitos", []))):
+        es_stack = i < len(stack)
+        original = re.sub(r"\s*\([^)]*\)", "", original[:200]).strip()  # «Inglés B2 (se valora)» -> «Inglés B2»; tope: una oferta hostil no encarece la expresión
+        if not es_stack and TIEMPO.search(norm(original)):
+            no_medidos.append(original)
+            continue
+        c = original if es_stack else (PREFIJO.sub("", original).strip() or original)
         n = norm(c)
         if not n or n in vistos:
             continue
         vistos.add(n)
-        if len(n.split()) <= 4:
+        if es_stack or (not otro_idioma and len(n.split()) <= 4):
             claves.append(c)
         else:
-            no_medidos.append(c)
+            no_medidos.append(original)
     return claves, no_medidos
 
 

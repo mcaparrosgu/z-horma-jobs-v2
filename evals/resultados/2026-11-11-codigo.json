@@ -1,21 +1,21 @@
 {
   "analisis_ofertas": [
     {
-      "caso": "analisis de ofertas en código (Ran 27 tests in 2.079s · OK)",
+      "caso": "analisis de ofertas en código (Ran 36 tests in 0.768s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "casos_raros": [
     {
-      "caso": "casos raros de verificar, medir-ats y buscar (Ran 31 tests in 5.076s · OK)",
+      "caso": "casos raros de verificar, medir-ats y buscar (Ran 31 tests in 1.746s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "fecha_cierre": [
     {
-      "caso": "la oferta cerrada no se recomienda (Ran 3 tests in 0.454s · OK)",
+      "caso": "la oferta cerrada no se recomienda (Ran 3 tests in 0.163s · OK)",
       "ok": true,
       "obtenido": null
     }
@@ -96,6 +96,36 @@
           "Power BI",
           "Tableau",
           "Inglés B2"
+        ],
+        "no_medidos": [
+          "Experiencia liderando equipos grandes de analistas en entornos regulados"
+        ]
+      }
+    },
+    {
+      "caso": "ats-catalan",
+      "ok": true,
+      "obtenido": {
+        "cobertura": 0.5,
+        "faltantes_sin_origen": [
+          "A3"
+        ],
+        "no_medidos": [
+          "Experiència 2 anys",
+          "Coneixements comptables i fiscals"
+        ]
+      }
+    },
+    {
+      "caso": "ats-prefijos",
+      "ok": true,
+      "obtenido": {
+        "cobertura": 0.667,
+        "faltantes_sin_origen": [
+          "Tableau"
+        ],
+        "no_medidos": [
+          "3 años de experiencia"
         ]
       }
     },
@@ -279,54 +309,54 @@
   ],
   "ingesta": [
     {
-      "caso": "tests de seguridad de la descarga (Ran 83 tests in 13.570s · OK)",
+      "caso": "tests de seguridad de la descarga (Ran 83 tests in 5.529s · OK)",
       "ok": true,
       "obtenido": null
     },
     {
-      "caso": "tests del detector de ATS (Ran 9 tests in 0.023s · OK)",
+      "caso": "tests del detector de ATS (Ran 9 tests in 0.007s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "convertir": [
     {
-      "caso": "tests del conversor de CV (Ran 5 tests in 0.985s · OK)",
+      "caso": "tests del conversor de CV (Ran 5 tests in 0.423s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "verificar_formacion": [
     {
-      "caso": "tests del verificador, formación (Ran 4 tests in 1.058s · OK)",
+      "caso": "tests del verificador, formación (Ran 4 tests in 0.503s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "meses": [
     {
-      "caso": "tests del verificador, meses (Ran 4 tests in 1.314s · OK)",
+      "caso": "tests del verificador, meses (Ran 4 tests in 0.436s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "nivel_familia": [
     {
-      "caso": "tests del nivel por familia (Ran 5 tests in 0.443s · OK)",
+      "caso": "tests del nivel por familia (Ran 5 tests in 0.185s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "origenes_perfil": [
     {
-      "caso": "tests de los origenes del perfil (Ran 6 tests in 1.109s · OK)",
+      "caso": "tests de los origenes del perfil (Ran 6 tests in 0.491s · OK)",
       "ok": true,
       "obtenido": null
     }
   ],
   "nivel_empresas": [
     {
-      "caso": "el nivel por familia no llega a empresas (Ran 3 tests in 0.087s · OK)",
+      "caso": "el nivel por familia no llega a empresas (Ran 3 tests in 0.030s · OK)",
       "ok": true,
       "obtenido": null
     }
