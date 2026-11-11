@@ -27,3 +27,8 @@ Al probar 3.6 por consola, ningún agente pidió aprobar o rechazar los cambios 
 No se reconocían «anys», meses ni idiomas en catalán; el ATS marcaba como «sin origen» años y textos en catalán; la frase de «sin nota» era falsa en 26/27. Al medir «anys», «Experiència 1 anys» a secas daba 100 a ana en «Terapeuta ocupacional»: Mar decidió medirla en el puesto del título. Los revisores hallaron que un título con «discapacidad» se usaba y citaba (corregido), regex cuadráticas (corregido) y `datos/` sin ignorar en git (corregido).
 
 **En llano:** la nota ahora entiende ofertas en catalán, pero muchas se apoyan en 1-2 requisitos: es orientativa.
+
+## 11-nov-2026 — Experiencia sin tema: título, negación y paréntesis
+Tras `/recomendar ana-datos`, tres 0 injustos: el título traía «con catalán» o el pueblo, «No es necesaria experiencia» se leía como requisito y el paréntesis «(es valorarà…)» hacía de tema. Mar decidió: «no es necesaria» cuenta como 0 años y se añaden «lloc, tasques, similars, funcions» a las palabras de relleno. Cambian solo esas 3 ofertas (58→75, 0→33, 0→25).
+
+**En llano:** el puesto se lee mejor del título, pero la nota sigue siendo orientativa.

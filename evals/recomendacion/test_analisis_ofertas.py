@@ -133,6 +133,27 @@ class Puntuar(unittest.TestCase):
         x = az.puntuar(oferta(titulo="Analista de datos junior", requisitos=["Experiència 2 anys"]), perfil(), PREFS, 2026)
         self.assertEqual(x["nota"], 100)
 
+    def test_el_puesto_del_titulo_acaba_antes_de_con_amb_o_guion(self):
+        adm = perfil(experiencias=[{"cargo": "Administrativa", "empresa": "X", "inicio": "2016", "fin": "2020", "descripcion": [], "origen": ORIGEN}])
+        x = az.puntuar(oferta(titulo="AUXILIAR ADMINISTRATIVO/A CON CATALÁN", requisitos=["Experiència 1 anys"]), adm, PREFS, 2026)
+        self.assertEqual(x["nota"], 100)
+        self.assertNotIn("CATALÁN", x["explicacion"])
+        x = az.puntuar(oferta(titulo="ANALISTA - SANT GUIM DE FREIXENET", requisitos=["Experiència 1 anys"]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 100)
+
+    def test_no_es_necesaria_experiencia_cuenta_como_cero(self):
+        x = az.puntuar(oferta(titulo="Ingeniero junior", requisitos=["Experiencia: 1 mes. No es necesaria experiencia."]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 100)
+
+    def test_el_parentesis_no_es_el_tema(self):
+        adm = perfil(experiencias=[{"cargo": "Administrativa", "empresa": "X", "inicio": "2016", "fin": "2020", "descripcion": [], "origen": ORIGEN}])
+        x = az.puntuar(oferta(titulo="AUXILIAR ADMINISTRATIU/IVA", requisitos=["Experiència 1 anys (es valorarà experiència en tasques similars)"]), adm, PREFS, 2026)
+        self.assertEqual(x["nota"], 100)
+
+    def test_lloc_similar_es_el_puesto_de_la_oferta(self):
+        x = az.puntuar(oferta(requisitos=["Experiència 3 mesos. En lloc similar"]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 100)  # título «Analista de datos»: es su cargo
+
     def test_meses_exactos_si_la_fecha_trae_mes(self):
         def con(inicio, fin):
             return perfil(experiencias=[{"cargo": "Analista de datos", "empresa": "X", "inicio": inicio, "fin": fin, "descripcion": [], "origen": ORIGEN}])
