@@ -3,8 +3,8 @@
 Última actualización: 11-nov-2026. Fuente de verdad: `docs/flujo-agentico.md`. Historia anterior: repo `horma-jobs-v1` (etiqueta `archivo-2026-11-11`).
 
 ## Hecho (v1)
-- **Pista A** (`.claude/`): agentes, skills y comandos; 48 evals en código.
-- **Pista B** (`web/`): ingesta con panel, perfil, recomendaciones, candidatura, aprobar y enviar, seguimiento, portal de empresas, cuenta y RGPD. 246 tests, migraciones hasta la 036.
+- **Pista A** (`.claude/`): agentes, skills y comandos; 52 evals en código.
+- **Pista B** (`web/`): ingesta con panel, perfil, recomendaciones, candidatura, aprobar y enviar, seguimiento, portal de empresas, cuenta y RGPD. 247 tests, migraciones hasta la 036.
 - Análisis de ofertas en código (skill `analisis-ofertas`).
 
 ## Siguiente
@@ -23,3 +23,6 @@ Verificación de correo y recuperar contraseña; límite por IP en login y regis
 
 ## Ramas
 Minijuegos, tiendas de apps, servidor MCP, envío automático con supervisor.
+
+## Artefactos (11-nov)
+Cuatro páginas, no más. Mar: [Horma por dentro](https://claude.ai/artifact/QBkk83ZVbjHC97kNq1y9xH), [Pruebas de Horma a mano](https://claude.ai/artifact/AeDdEVZyd7y4xi4mHe7nYY) y [Pruebas de agentes por consola](https://claude.ai/artifact/DQozj1WyoRq9cdQNrDNojz). Profesor: [Resumen al día](https://claude.ai/artifact/8BcKjspjFCDtNoTB7xVFL2) y su [Flujo agéntico](https://claude.ai/artifact/UEWjpE1r4f6L9mZQVpQKvq) (solo lectura).
