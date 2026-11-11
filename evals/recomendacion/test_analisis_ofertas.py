@@ -114,10 +114,66 @@ class Puntuar(unittest.TestCase):
         x = az.puntuar(oferta(requisitos=["10 años de experiencia"]), perfil(), PREFS, 2026)
         self.assertEqual(x["nota"], 40)
 
+    def test_anys_en_catalan(self):
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 2 anys"]), perfil(), PREFS, 2026)["nota"], 100)
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència de 10 anys"]), perfil(), PREFS, 2026)["nota"], 40)
+
+    def test_meses_se_miden_con_la_logica_de_anios(self):
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 12 mesos"]), perfil(), PREFS, 2026)["nota"], 100)
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiencia 6 meses"]), perfil(), PREFS, 2026)["nota"], 100)
+        self.assertEqual(az.puntuar(oferta(requisitos=["60 meses de experiencia"]), perfil(), PREFS, 2026)["nota"], 80)  # 4 años = 48 de 60
+        corta = perfil(experiencias=[{"cargo": "Analista de datos", "empresa": "X", "inicio": "2024", "fin": "2024", "descripcion": [], "origen": ORIGEN}])
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 12 mesos"]), corta, PREFS, 2026)["nota"], 0)  # años de calendario: 2024-2024 cuenta 0 (límite conocido: 12/2023-01/2024 contaría 12 meses)
+
+    def test_experiencia_sin_tema_se_mide_en_el_puesto_del_titulo(self):
+        x = az.puntuar(oferta(titulo="Terapeuta ocupacional (substitució)", requisitos=["Experiència 1 anys"]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 0)  # 4 años de analista no son experiencia de terapeuta
+        self.assertIn("Terapeuta ocupacional", x["explicacion"])
+        self.assertNotIn("substitució", x["explicacion"])
+        x = az.puntuar(oferta(titulo="Analista de datos junior", requisitos=["Experiència 2 anys"]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 100)
+
+    def test_meses_exactos_si_la_fecha_trae_mes(self):
+        def con(inicio, fin):
+            return perfil(experiencias=[{"cargo": "Analista de datos", "empresa": "X", "inicio": inicio, "fin": fin, "descripcion": [], "origen": ORIGEN}])
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 3 mesos"]), con("03/2024", "05/2024"), PREFS, 2026)["nota"], 67)  # 2 de 3
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 12 mesos"]), con("2023-12", "2024-01"), PREFS, 2026)["nota"], 8)  # 1 mes, no 12
+        self.assertEqual(az.puntuar(oferta(requisitos=["Experiència 12 mesos"]), con("2023", "2024"), PREFS, 2026)["nota"], 100)  # solo años: como antes
+
+    def test_prohibidas_en_catalan(self):
+        for t in ["Edat entre 25 i 40 anys", "Persona jove", "Major de 45 anys", "Sexe: home", "Sense distinció de gènere",
+                  "Nacionalitat espanyola", "Estat civil", "Bona salut", "Certificat de discapacitat", "Bona presència", "Personalitat oberta"]:
+            self.assertTrue(az.es_prohibido(t), t)
+        self.assertFalse(az.es_prohibido("Que genere informes semanales"))  # «genere» castellano no es «gènere»
+
+    def test_titulo_con_rasgo_prohibido_no_se_usa_ni_se_cita(self):
+        x = az.puntuar(oferta(titulo="Conserje con certificado de discapacidad", requisitos=["Experiència 1 anys", "SQL"]), perfil(), PREFS, 2026)
+        self.assertEqual(x["nota"], 100)  # solo cuenta SQL; la experiencia no se mide con ese título
+        self.assertNotIn("discapacidad", x["explicacion"])
+
+    def test_texto_hostil_largo_no_cuelga(self):
+        import time
+        t = time.time()
+        az.puntuar(oferta(titulo="(" * 20000, requisitos=["1" + " " * 20000 + "x"]), perfil(), PREFS, 2026)
+        self.assertLess(time.time() - t, 0.5)
+
+    def test_idiomas_escritos_en_catalan(self):
+        p = perfil(idiomas=[{"idioma": "Español", "nivel": "nativo", "origen": ORIGEN}, {"idioma": "Inglés", "nivel": "B2", "origen": ORIGEN}])
+        reqs = ["Català: parlat Superior, escrit Superior", "Anglès B2", "Castellà (espanyol): parlat Superior"]
+        x = az.puntuar(oferta(requisitos=reqs), p, PREFS, 2026)
+        self.assertEqual(x["nota"], 67)  # falta el catalán; inglés y castellano sí
+        self.assertIn("Català", x["explicacion"])
+
     def test_sin_requisitos_nota_null(self):
         x = az.puntuar(oferta(requisitos=[]), perfil(), PREFS, 2026)
         self.assertIsNone(x["nota"])
         self.assertIn("Sin nota", x["explicacion"])
+
+    def test_sin_nota_con_requisitos_no_dice_que_no_los_trae(self):
+        x = az.puntuar(oferta(requisitos=["Ganas de aprender", "Persona organizada"]), perfil(), PREFS, 2026)
+        self.assertIsNone(x["nota"])
+        self.assertIn("ninguno de los 2 requisitos", x["explicacion"])
+        self.assertNotIn("no trae requisitos", x["explicacion"])
 
     def test_avisos_no_influyen(self):
         a = az.puntuar(oferta(), perfil(), PREFS, 2026)

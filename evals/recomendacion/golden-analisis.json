@@ -947,7 +947,7 @@
         "oferta_id": "of-1",
         "nota": 100,
         "nivel_condiciones": "encaja",
-        "explicacion": "Cubres 1 de 1 requisitos medibles (3 años de experiencia). Condiciones: encaja.",
+        "explicacion": "Cubres 1 de 1 requisitos medibles (3 años de experiencia, como Analista de datos). Condiciones: encaja.",
         "sin_sueldo": true
       }
     }
@@ -1103,7 +1103,7 @@
         "oferta_id": "of-1",
         "nota": 40,
         "nivel_condiciones": "encaja",
-        "explicacion": "Cubres 0 de 1 requisitos medibles. En parte: 10 años de experiencia [menos años de los pedidos]. Condiciones: encaja.",
+        "explicacion": "Cubres 0 de 1 requisitos medibles. En parte: 10 años de experiencia, como Analista de datos [menos tiempo en ese puesto]. Condiciones: encaja.",
         "sin_sueldo": true
       }
     }
@@ -2542,7 +2542,7 @@
         "oferta_id": "of-1",
         "nota": null,
         "nivel_condiciones": "encaja",
-        "explicacion": "Sin nota: la oferta no trae requisitos concretos que medir contra tu perfil, y no se inventa una cifra. Condiciones: encaja.",
+        "explicacion": "Sin nota: el único requisito de la oferta no se puede medir con tu perfil (se miden experiencia, titulación, idiomas y tecnologías), y no se inventa una cifra. Condiciones: encaja.",
         "sin_sueldo": true
       }
     }
@@ -2850,9 +2850,9 @@
       },
       "match": {
         "oferta_id": "of-1",
-        "nota": null,
+        "nota": 0,
         "nivel_condiciones": "parcial",
-        "explicacion": "Sin nota: la oferta no trae requisitos concretos que medir contra tu perfil, y no se inventa una cifra. Condiciones: parcial (no coincide: idioma).",
+        "explicacion": "Cubres 0 de 1 requisitos medibles. No constan en tu perfil: Experiència 1 any en mantenimiento industrial. Condiciones: parcial (no coincide: idioma).",
         "sin_sueldo": true
       }
     }

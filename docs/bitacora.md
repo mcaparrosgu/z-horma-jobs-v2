@@ -12,3 +12,18 @@ El profesor dijo que sobraba documentación. El documento «Horma jobs» del Cua
 
 **En llano:** menos páginas y más cortas, sin perder lo importante. Mar ha confirmado borrar Construcción, Fuentes de empleo, Guía de Horma y la estrategia legal (su texto completo está en la misma copia de seguridad). Siguen publicadas las tres viejas con comentarios del profesor, hasta que él abra la página nueva.
 
+
+## 11-nov-2026 — Primera ingesta real: 50 ofertas de Feina Activa
+Entraron 50/50, pero el esquema no guarda jornada, funciones ni periodo del salario, y la nota sale de pocos requisitos medibles. Fallo mío: un ejemplo («catalán») en mi prompt sesgó el `idioma` de FA92323912; corregido a mano. Copiar JSON de agente a archivo a mano es caro y no lo detecta el validador.
+
+**En llano:** funciona de punta a punta, pero la ficha de oferta es demasiado pobre para puntuar bien.
+
+## 11-nov-2026 — Prueba 3.6: `/perfilar` no preguntaba por los `cambios_propuestos`
+Al probar 3.6 por consola, ningún agente pidió aprobar o rechazar los cambios de los CV base; `cambios_propuestos` no se guarda en disco, así que no se pudo recuperar. Se relanzó `generador-cv-base` para `ana-datos`: Mar aprobó 4 de 5 cambios y rechazó uno, y el CV afectado se regeneró (no se edita a mano). Validan el esquema y `verificar.py`. Pendiente: que el paso 6 de `perfilar.md` pregunte siempre por sí solo.
+
+**En llano:** la lista de cambios solo existe en el momento de generar el CV; si ese paso se salta, ya no hay forma de enseñarla sin volver a generar.
+
+## 11-nov-2026 — ATS y nota corregidos tras probar `/recomendar` y `/candidatura` con ana-datos
+No se reconocían «anys», meses ni idiomas en catalán; el ATS marcaba como «sin origen» años y textos en catalán; la frase de «sin nota» era falsa en 26/27. Al medir «anys», «Experiència 1 anys» a secas daba 100 a ana en «Terapeuta ocupacional»: Mar decidió medirla en el puesto del título. Los revisores hallaron que un título con «discapacidad» se usaba y citaba (corregido), regex cuadráticas (corregido) y `datos/` sin ignorar en git (corregido).
+
+**En llano:** la nota ahora entiende ofertas en catalán, pero muchas se apoyan en 1-2 requisitos: es orientativa.

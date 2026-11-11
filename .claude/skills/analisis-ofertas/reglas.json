@@ -716,6 +716,15 @@
     "chino",
     "ruso"
   ],
+  "idiomas_otros_nombres": {
+    "catala": "catalan",
+    "castellano": "espanol",
+    "castella": "espanol",
+    "espanyol": "espanol",
+    "angles": "ingles",
+    "alemany": "aleman",
+    "arab": "arabe"
+  },
   "se_valora": [
     "se valora",
     "valorable",
@@ -746,7 +755,19 @@
     "\\breligi",
     "\\bpersonalidad\\b",
     "\\bbuena presencia\\b",
-    "\\baspecto\\b"
+    "\\baspecto\\b",
+    "\\bedat\\b",
+    "\\bjoves?\\b",
+    "\\bmajors? de \\d+",
+    "\\bsexe\\b",
+    "\\b(de|el) genere\\b",
+    "\\bnacionalitat\\b",
+    "\\bestat civil\\b",
+    "\\bsalut\\b",
+    "\\bdiscapacitat\\b",
+    "\\bembaras",
+    "\\bpersonalitat\\b",
+    "\\bbona presencia\\b"
   ],
   "palabras_vacias": [
     "experiencia",

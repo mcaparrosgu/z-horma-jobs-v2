@@ -1,0 +1,9 @@
+{
+  "descripcion": "Oferta en español contra el CV base: «Conocimientos de Python» es Python (ya en el stack, no se repite); «Experiencia en SQL» se mide como SQL; «3 años de experiencia» no se mide (años); Tableau no está en el perfil. 2 de 3 = 0.667.",
+  "cobertura": 0.667,
+  "faltantes_con_origen": [],
+  "faltantes_sin_origen": [
+    "Tableau"
+  ],
+  "no_medidos": 1
+}
